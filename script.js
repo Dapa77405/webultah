@@ -24,8 +24,8 @@ finalGift.addEventListener('click', () => {
     
     clicksNeeded--;
     
-    // Animasi goyang
-    finalGift.style.transform = `scale(1.1) rotate(${Math.random() * 30 - 15}deg)`;
+    // Animasi goyang kencang
+    finalGift.style.transform = `scale(1.15) rotate(${Math.random() * 40 - 20}deg)`;
     setTimeout(() => { finalGift.style.transform = "scale(1) rotate(0deg)"; }, 150);
 
     if (clicksNeeded > 0) {
@@ -42,9 +42,9 @@ finalGift.addEventListener('click', () => {
 });
 
 function fireConfetti() {
-    var duration = 5 * 1000;
+    var duration = 8 * 1000;
     var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+    var defaults = { startVelocity: 40, spread: 360, ticks: 100, zIndex: 9999 };
 
     function randomInRange(min, max) { return Math.random() * (max - min) + min; }
 
@@ -54,16 +54,16 @@ function fireConfetti() {
 
       var particleCount = 50 * (timeLeft / duration);
       
-      // Warna disesuaikan dengan tema biru & putih
+      // Warna dominan biru neon, biru tua, dan putih
       confetti(Object.assign({}, defaults, { 
           particleCount,
           origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-          colors: ['#ffffff', '#1e3a8a', '#3b82f6', '#60a5fa']
+          colors: ['#ffffff', '#1e3a8a', '#3b82f6', '#60a5fa', '#38bdf8']
       }));
       confetti(Object.assign({}, defaults, { 
           particleCount,
           origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-          colors: ['#ffffff', '#1e3a8a', '#3b82f6', '#60a5fa']
+          colors: ['#ffffff', '#1e3a8a', '#3b82f6', '#60a5fa', '#38bdf8']
       }));
     }, 250);
 }
