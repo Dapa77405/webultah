@@ -1,43 +1,80 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* SANGAT PENTING agar layout tidak geser/melebar */
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
 html, body {
-    /* Vibe Biru Malam yang intens, gradasi dari navy ke hitam */
+    /* Vibe Biru Malam Mewah & Bersinar (Waaah effect) */
     background: radial-gradient(circle at center, #1e3a8a 0%, #0c1527 60%, #020617 100%);
     color: white;
     width: 100vw;
     height: 100vh;
-    overflow: hidden; /* Cegah geser ke kiri/kanan */
+    overflow: hidden;
     position: relative;
 }
 
-/* Background Kupu-kupu Global */
+/* --- EFEK KILAUAN BINTANG / SALJU BERJATUHAN (SPARKLES) --- */
+.sparkle-container {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+.sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #38bdf8, 0 0 20px #60a5fa;
+    animation: fallSparkle linear infinite;
+}
+@keyframes fallSparkle {
+    0% { transform: translateY(-20px) scale(0.5); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(105vh) scale(1.2); opacity: 0; }
+}
+
+/* Background Kupu-kupu Global Diperbanyak */
 .bg-butterflies {
     position: absolute;
     width: 100%; height: 100%;
     top: 0; left: 0;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.15;
+    opacity: 0.25;
 }
 .butterfly {
     position: absolute;
-    filter: invert(1) sepia(1) saturate(10) hue-rotate(200deg);
-    animation: fly 20s linear infinite;
+    filter: invert(1) sepia(1) saturate(15) hue-rotate(200deg);
+    animation: fly 15s linear infinite;
 }
-.b-1 { width: 50px; top: 20%; left: -10%; animation-duration: 25s; }
-.b-2 { width: 30px; bottom: 30%; right: -10%; animation-duration: 18s; animation-direction: reverse; }
-.b-3 { width: 40px; top: 70%; left: -10%; animation-duration: 22s; }
+.b-1 { width: 50px; top: 10%; left: -10%; animation-duration: 20s; }
+.b-2 { width: 35px; bottom: 20%; right: -10%; animation-duration: 15s; animation-direction: reverse; }
+.b-3 { width: 45px; top: 60%; left: -10%; animation-duration: 18s; }
+.b-4 { width: 40px; top: 30%; right: -10%; animation-duration: 22s; animation-direction: reverse; }
 
 @keyframes fly {
     0% { transform: translateX(0) translateY(0) rotate(0deg); }
-    50% { transform: translateX(50vw) translateY(-100px) rotate(20deg); }
-    100% { transform: translateX(120vw) translateY(50px) rotate(-10deg); }
+    30% { transform: translateX(40vw) translateY(-80px) rotate(15deg); }
+    70% { transform: translateX(80vw) translateY(50px) rotate(-15deg); }
+    100% { transform: translateX(110vw) translateY(-20px) rotate(10deg); }
 }
+
+/* Efek Cahaya Orb Glowing di Sudut */
+.glow-orb {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 0;
+    pointer-events: none;
+}
+.orb-1 { top: -100px; left: -100px; }
+.orb-2 { bottom: -100px; right: -100px; }
+.orb-3 { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; }
 
 
 /* Screen Management */
@@ -52,8 +89,8 @@ html, body {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.6s ease-in-out, visibility 0.6s;
-    z-index: 1;
-    overflow: hidden; /* Pastikan konten dalam screen tidak membuat scroll samping */
+    z-index: 3;
+    overflow: hidden;
 }
 .screen.active {
     opacity: 1;
@@ -64,8 +101,8 @@ html, body {
 /* Typography */
 .elegant-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 4rem;
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(255,255,255,0.4);
+    font-size: 4.2rem;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 50px rgba(255,255,255,0.6);
     margin-bottom: 20px;
     text-align: center;
     line-height: 1.2;
@@ -74,17 +111,18 @@ html, body {
 .tap-text {
     font-style: italic;
     letter-spacing: 3px;
-    color: #cbd5e1;
+    color: #e0f2fe;
     margin-top: 30px;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    text-shadow: 0 0 10px #38bdf8;
 }
 .pointer { cursor: pointer; }
 .pulse { animation: pulse 1.5s infinite; }
 
 @keyframes pulse {
-    0% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #3b82f6; }
-    50% { transform: scale(1.05); opacity: 0.7; text-shadow: 0 0 20px #60a5fa; }
-    100% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #3b82f6; }
+    0% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #38bdf8; }
+    50% { transform: scale(1.05); opacity: 0.8; text-shadow: 0 0 25px #60a5fa, 0 0 40px #ffffff; }
+    100% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #38bdf8; }
 }
 
 /* --- SCREEN 1: ENVELOPE --- */
@@ -95,136 +133,139 @@ html, body {
     margin-top: 20px;
 }
 .envelope-container:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px) scale(1.08);
 }
 .envelope {
     position: relative;
-    width: 280px; height: 180px;
-    background: #e2e8f0;
-    border-radius: 5px;
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.5), inset 0 0 20px rgba(0,0,0,0.1);
+    width: 290px; height: 185px;
+    background: #f8fafc;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.7), inset 0 0 20px rgba(0,0,0,0.1);
 }
 .envelope::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 0; height: 0;
-    border-top: 90px solid #cbd5e1;
-    border-right: 140px solid transparent;
-    border-left: 140px solid transparent;
+    border-top: 95px solid #e2e8f0;
+    border-right: 145px solid transparent;
+    border-left: 145px solid transparent;
     z-index: 2;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 5px 8px rgba(0,0,0,0.2));
 }
 .wax-seal {
     position: absolute;
-    top: 65px; left: 50%;
+    top: 68px; left: 50%;
     transform: translateX(-50%);
-    width: 50px; height: 50px;
+    width: 52px; height: 52px;
     background: radial-gradient(circle, #38bdf8, #1d4ed8, #1e3a8a);
     border-radius: 50%;
     z-index: 3;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 0 5px 15px rgba(29, 78, 216, 0.8);
-    border: 2px solid #60a5fa;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.6), 0 0 20px rgba(56, 189, 248, 0.9);
+    border: 2px solid #bae6fd;
 }
 
-/* Mawar Hiasan */
+/* Mawar Hiasan Lebih Banyak */
 .deco-rose {
     position: absolute;
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(200deg) drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    filter: invert(1) sepia(1) saturate(6) hue-rotate(195deg) drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
     width: 70px;
 }
 .rose-env-1 { top: -25px; left: -30px; transform: rotate(-20deg); }
 .rose-env-2 { bottom: -15px; right: -30px; transform: rotate(15deg); width: 55px; }
+.rose-env-3 { top: -20px; right: -25px; transform: rotate(25deg); width: 45px; }
 .deco-butterfly {
     position: absolute;
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(190deg);
+    filter: invert(1) sepia(1) saturate(6) hue-rotate(190deg);
 }
 
-/* --- SCREEN 2: OPENING SURPRISE --- */
+/* --- SCREEN 2: OPENING SURPRISE (Super Ramai 5 Polaroid) --- */
 .collage-container {
     position: relative;
-    width: 90%; max-width: 600px; /* Diperkecil agar pas di HP */
-    height: 400px;
+    width: 92%; max-width: 650px;
+    height: 440px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Amplop Terbuka di belakang surat */
 .envelope-open-bg {
     position: absolute;
-    width: 320px; height: 220px;
+    width: 340px; height: 230px;
     background: #cbd5e1;
-    border-radius: 10px;
+    border-radius: 12px;
     z-index: 1;
     top: 50%; left: 50%;
     transform: translate(-50%, -40%);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 .envelope-open-bg::before {
     content: '';
     position: absolute;
     bottom: 0; left: 0;
     width: 0; height: 0;
-    border-bottom: 110px solid #e2e8f0;
-    border-right: 160px solid transparent;
-    border-left: 160px solid transparent;
+    border-bottom: 115px solid #e2e8f0;
+    border-right: 170px solid transparent;
+    border-left: 170px solid transparent;
     z-index: 4;
 }
 
 .center-letter {
     background: #ffffff;
     padding: 20px 30px;
-    border-radius: 15px;
+    border-radius: 18px;
     text-align: center;
     color: #1e3a8a;
-    box-shadow: 0 0 50px rgba(255,255,255,0.4);
+    box-shadow: 0 0 60px rgba(56, 189, 248, 0.6);
     z-index: 5;
     position: relative;
     transform: translateY(-20px);
-    width: 250px; /* Fix width untuk mencegah melebar di HP */
+    width: 260px;
 }
 .center-letter .elegant-title {
     color: #1e3a8a;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    font-size: 2.8rem;
+    text-shadow: none;
+    font-size: 3rem;
     margin-bottom: -5px;
 }
 .badge {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #38bdf8, #1d4ed8);
     color: white;
-    padding: 5px 20px;
+    padding: 6px 20px;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.05rem;
     display: inline-block;
     box-shadow: 0 5px 15px rgba(29, 78, 216, 0.5);
 }
 
-/* Polaroid Berhamburan */
+/* Polaroid Berhamburan 5 Buah */
 .polaroid {
     background: white;
-    padding: 8px 8px 30px 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    padding: 8px 8px 28px 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(56, 189, 248, 0.3);
     position: absolute;
     z-index: 6;
     transition: transform 0.4s ease;
+    border-radius: 4px;
 }
-.polaroid img { width: 100%; height: 100%; object-fit: cover; }
-.polaroid:hover { z-index: 20; transform: scale(1.15) !important; }
+.polaroid img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.polaroid:hover { z-index: 20; transform: scale(1.2) !important; }
 
-/* Posisi Polaroid Screen 2 */
-.p-1 { width: 130px; left: -10%; top: 20%; transform: rotate(-15deg); }
-.p-2 { width: 110px; left: 5%; bottom: 10%; transform: rotate(10deg); }
-.p-3 { width: 120px; right: -5%; top: 15%; transform: rotate(12deg); }
-.p-4 { width: 130px; right: 5%; bottom: 5%; transform: rotate(-8deg); }
+.p-1 { width: 120px; left: -5%; top: 12%; transform: rotate(-18deg); }
+.p-2 { width: 110px; left: 2%; bottom: 5%; transform: rotate(12deg); }
+.p-3 { width: 115px; right: -2%; top: 8%; transform: rotate(15deg); }
+.p-4 { width: 125px; right: 2%; bottom: 2%; transform: rotate(-10deg); }
+.p-5 { width: 100px; left: 40%; top: -8%; transform: rotate(5deg); z-index: 7; }
 
 /* Dekorasi Bunga & Kupu di Screen 2 */
-.r-1 { width: 80px; top: 10%; right: 20%; z-index: 7; }
-.r-2 { width: 60px; bottom: 20%; left: 25%; z-index: 7; }
-.b-center { width: 90px; bottom: 5%; left: 15%; z-index: 8; transform: rotate(-15deg); animation: float 4s infinite alternate; }
+.r-1 { width: 75px; top: 5%; right: 18%; z-index: 7; }
+.r-2 { width: 60px; bottom: 15%; left: 18%; z-index: 7; }
+.r-3 { width: 50px; top: 40%; left: -8%; z-index: 7; transform: rotate(-45deg); }
+.b-center-1 { width: 85px; bottom: 2%; left: 12%; z-index: 8; transform: rotate(-15deg); animation: float 4s infinite alternate; }
+.b-center-2 { width: 70px; top: 25%; right: -5%; z-index: 8; transform: rotate(25deg); animation: float 3.5s infinite alternate-reverse; }
 
-/* Hati Glowing */
+/* Hati Glowing Melimpah */
 .glow-heart {
     position: absolute;
     color: #60a5fa;
@@ -232,85 +273,100 @@ html, body {
     z-index: 4;
     animation: float 3s infinite ease-in-out;
 }
-.h-1 { top: 10%; left: 15%; transform: rotate(-20deg); font-size: 5rem; opacity: 0.8;}
-.h-2 { bottom: 25%; right: 20%; transform: rotate(15deg); font-size: 3rem;}
+.h-1 { top: 5% ; left: 12%; transform: rotate(-20deg); font-size: 4.5rem; opacity: 0.9; }
+.h-2 { bottom: 18%; right: 15%; transform: rotate(15deg); font-size: 3.5rem; }
+.h-3 { top: 50%; right: -5%; transform: rotate(30deg); font-size: 2.8rem; color: #38bdf8; }
 
 
-/* --- SCREEN 3: MENU --- */
+/* --- SCREEN 3: MENU (Mewah & Elegan) --- */
 .menu-container {
     display: flex;
     gap: 25px;
     justify-content: center;
     flex-wrap: wrap;
     width: 90%; max-width: 600px;
+    z-index: 4;
 }
 .menu-item {
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s;
-    width: 40%; /* 2 kolom di HP */
+    width: 42%;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
 }
-.menu-item:hover { transform: scale(1.1); }
+.menu-item:hover { 
+    transform: scale(1.08); 
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+}
 .icon-glow {
     font-size: 3.5rem;
     margin-bottom: 10px;
     color: #fff;
-    text-shadow: 0 0 20px #60a5fa, 0 0 40px #1d4ed8;
+    text-shadow: 0 0 20px #38bdf8, 0 0 40px #1d4ed8;
 }
 .menu-item p {
     font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #e0f2fe;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 /* --- GLOBAL BACK BUTTON --- */
 .back-btn {
     position: absolute;
     top: 25px; right: 25px;
-    background: #22c55e;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
     color: white;
-    border: 2px solid #16a34a;
+    border: 2px solid #4ade80;
     padding: 8px 20px;
     border-radius: 25px;
     font-weight: 700;
     font-size: 0.9rem;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
     z-index: 50;
     transition: transform 0.2s;
 }
 .back-btn:hover { transform: scale(1.1); }
 
 
-/* --- SCREEN 4: JOURNEY --- */
+/* --- SCREEN 4: JOURNEY (Sangat Ramai & Estetik) --- */
 .journey-collage {
     position: relative;
-    width: 90%; height: 75vh;
-    max-width: 800px;
+    width: 92%; height: 78vh;
+    max-width: 850px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.j-1 { width: 130px; top: 10%; left: 0%; transform: rotate(-12deg); }
-.j-2 { width: 120px; top: 15%; right: 5%; transform: rotate(15deg); }
-.j-3 { width: 140px; bottom: 10%; left: 10%; transform: rotate(-5deg); }
-.j-4 { width: 130px; bottom: 15%; right: 10%; transform: rotate(8deg); }
-.j-5 { width: 160px; z-index: 5; transform: rotate(2deg); }
-/* Sembunyikan j-6 & j-7 di layar kecil agar tidak penuh/keluar layar */
-.j-6 { display: none; }
-.j-7 { display: none; }
+.j-1 { width: 120px; top: 5%; left: 2%; transform: rotate(-15deg); }
+.j-2 { width: 115px; top: 8%; right: 2%; transform: rotate(18deg); }
+.j-3 { width: 130px; bottom: 8%; left: 5%; transform: rotate(-8deg); }
+.j-4 { width: 120px; bottom: 12%; right: 5%; transform: rotate(10deg); }
+.j-5 { width: 150px; z-index: 5; transform: rotate(3deg); }
+.j-6 { width: 110px; top: 38% !important; left: -2% !important; transform: rotate(-25deg); display: block !important; z-index: 4; }
+.j-7 { width: 110px; bottom: 35% !important; right: -2% !important; transform: rotate(22deg); display: block !important; z-index: 4; }
 
 .float-deco {
     position: absolute;
     font-size: 3rem;
     color: #93c5fd;
-    text-shadow: 0 0 15px #60a5fa, 0 0 30px #2563eb;
+    text-shadow: 0 0 20px #38bdf8, 0 0 40px #2563eb;
     animation: float 4s infinite alternate;
 }
-.d-1 { bottom: 20%; left: 5%; color: #cbd5e1; }
-.d-2 { top: 20%; right: 20%; }
-.d-3 { top: 25%; left: 25%; font-size: 2.5rem; color: #f8fafc;}
-.d-4 { bottom: 30%; right: 10%; color: #38bdf8; font-size: 2.5rem;} 
+.d-1 { bottom: 15%; left: 2%; color: #cbd5e1; }
+.d-2 { top: 12%; right: 28%; font-size: 3.5rem; }
+.d-3 { top: 18%; left: 18%; font-size: 2.5rem; color: #f8fafc;}
+.d-4 { bottom: 22%; right: 2%; color: #38bdf8; font-size: 2.8rem;} 
+.d-5 { top: 45%; left: 2%; color: #fef08a; font-size: 2rem; }
+.d-6 { top: 50%; right: 2%; color: #f472b6; font-size: 2.2rem; }
 
 
 /* --- SCREEN 5: MOMENT --- */
@@ -318,17 +374,17 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* Stack vertikal di HP */
-    gap: 30px;
-    width: 90%; max-width: 500px; /* Dibatasi agar tidak melebar */
+    flex-direction: column;
+    gap: 25px;
+    width: 90%; max-width: 500px;
 }
 .letter-paper {
     width: 100%;
     background: url('https://www.transparenttextures.com/patterns/cream-paper.png'), #fdfbf7;
     color: #1e293b;
     padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 30px rgba(56, 189, 248, 0.4);
     line-height: 1.6;
     font-size: 0.95rem;
     position: relative;
@@ -343,24 +399,25 @@ html, body {
 }
 .gold-frame {
     border: 10px solid #d4af37;
-    border-radius: 5px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.7);
-    width: 130px; /* Diperkecil untuk HP */
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8), 0 0 15px rgba(212, 175, 55, 0.5);
+    width: 130px;
 }
 .music-player-mini {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(0,0,0,0.6);
-    padding: 10px 15px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 18px;
     border-radius: 30px;
-    border: 1px solid #3b82f6;
+    border: 1px solid #38bdf8;
     font-size: 0.85rem;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 .spin { animation: spin 4s linear infinite; font-size: 2rem; color: #60a5fa;}
 
 
-/* --- SCREEN 6: PLAYLIST --- */
+/* --- SCREEN 6: PLAYLIST (Dilimpahkan dengan Bingkai Tambahan) --- */
 .playlist-container {
     display: flex;
     align-items: center;
@@ -368,64 +425,96 @@ html, body {
     flex-direction: column;
     gap: 20px;
     width: 90%; max-width: 600px;
+    position: relative;
 }
 .video-wrapper {
     width: 100%;
     aspect-ratio: 16/9;
     background: #000;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-    border: 2px solid #38bdf8;
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.7);
+    border: 3px solid #38bdf8;
     z-index: 5;
 }
-.playlist-decor {
-    display: none; /* Sembunyikan dekorasi tambahan playlist di mobile agar video fokus */
+/* Bingkai tambahan melayang di video agar lebih wah */
+.playlist-extra-decor {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 5px;
 }
+.float-f-1 {
+    width: 90px !important;
+    border-width: 6px !important;
+    transform: rotate(-8deg);
+    animation: float 3s infinite alternate;
+}
+.float-f-2 {
+    width: 90px !important;
+    border-width: 6px !important;
+    transform: rotate(8deg);
+    animation: float 3s infinite alternate-reverse;
+}
+.neon-notes i {
+    position: absolute;
+    font-size: 2.5rem;
+    color: #38bdf8;
+    text-shadow: 0 0 15px #38bdf8, 0 0 30px #1d4ed8;
+    animation: float 2s infinite alternate;
+}
+.note-1 { top: 10px; left: 10px; }
+.note-2 { top: 10px; right: 10px; animation-delay: 0.5s; }
 
 
-/* --- SCREEN 7: GIFT (Diperbaiki agar pas tengah di HP) --- */
+/* --- SCREEN 7: GIFT (Kado Sangat Megah) --- */
 .gift-container { 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 90%; 
-    max-width: 400px; /* Batasan ketat agar kotak ucapan tidak melebar */
+    max-width: 400px;
     margin: 0 auto;
 }
 .gift-box-interactive {
     position: relative;
-    font-size: 7rem; /* Dikecilkan sedikit untuk HP */
+    font-size: 7.5rem;
     cursor: pointer;
     user-select: none;
     display: inline-block;
     transition: transform 0.1s;
-    margin: 20px 0;
-    filter: drop-shadow(0 0 25px rgba(96, 165, 250, 0.6));
+    margin: 15px 0;
+    filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.8));
+    animation: bounceGift 2s infinite;
+}
+@keyframes bounceGift {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
 }
 .gift-box-interactive:active { transform: scale(0.9); }
 .star-float {
     position: absolute;
     color: #fef08a;
-    font-size: 2rem;
-    text-shadow: 0 0 10px #facc15;
+    font-size: 2.2rem;
+    text-shadow: 0 0 15px #facc15;
     animation: pulse 1s infinite;
 }
 
-/* WADAH PESAN TERAKHIR (Pencegah Layout Rusak ke Kiri) */
 .final-message-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .final-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     padding: 25px 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+    border-radius: 18px;
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.9);
     position: relative;
     text-align: center;
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -436,10 +525,7 @@ html, body {
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Penyesuaian Khusus Mobile (<400px) */
-@media (max-width: 400px) {
-    .elegant-title { font-size: 2.8rem; }
-    .menu-item p { font-size: 1.5rem; }
-    .icon-glow { font-size: 2.8rem; }
-    .back-btn { top: 15px; right: 15px; padding: 6px 15px; font-size: 0.8rem; }
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-10px) rotate(5deg); }
 }
