@@ -45,7 +45,7 @@
 
     <!-- SCREEN 2: Opening Surprise (Collage Sangat Ramai & Mewah) -->
     <div id="screen-2" class="screen">
-        <div class="collage-container">
+        <div class="collage-container" onclick="goToScreen('screen-3')">
             <!-- Amplop terbuka di belakang -->
             <div class="envelope-open-bg"></div>
 
@@ -74,7 +74,8 @@
             <div class="glow-heart h-2"><i class="fa-solid fa-heart"></i></div>
             <div class="glow-heart h-3"><i class="fa-solid fa-heart"></i></div>
         </div>
-        <p class="tap-text pulse pointer" onclick="goToScreen('screen-3')" style="position: absolute; bottom: 6%;">💖 TAP FOR SURPRISE 💖</p>
+        <!-- Tulisan TAP FOR SURPRISE yang jelas dan bisa diklik -->
+        <p class="tap-text pulse pointer" onclick="goToScreen('screen-3')" style="position: absolute; bottom: 5%; z-index: 20;">✨ TAP FOR SURPRISE ✨</p>
     </div>
 
     <!-- SCREEN 3: Choose the Surprise (MENU Mewah) -->
@@ -159,7 +160,7 @@
             <div class="video-wrapper">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oVZg-WwgivI?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-            <!-- Dekorasi bingkai melayang di sekitar video (Waaah effect) -->
+            <!-- Dekorasi bingkai melayang di sekitar video -->
             <div class="playlist-extra-decor">
                 <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+1" class="gold-frame float-f-1" alt="f1">
                 <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+2" class="gold-frame float-f-2" alt="f2">
