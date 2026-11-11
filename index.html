@@ -3,37 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Sweet 16, Miel! ❤️</title>
+    <title>Happy Sweet 16, Miel! 💙</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Confetti JS -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Tampilan Awal: Kado -->
-        <div id="intro">
-            <h1>Hai, Miel... ❤️</h1>
-            <p>Ada sesuatu yang spesial buat kamu.</p>
-            <div class="gift-box" id="giftBox">
-                🎁
-                <p class="click-text">Klik kadonya!</p>
-            </div>
-        </div>
 
-        <!-- Tampilan Ucapan (Hidden by default) -->
-        <div id="message" class="hidden">
-            <h1 class="title">Happy Sweet 16th Birthday!</h1>
-            <h2 class="name">Salisa (Miel) 💖</h2>
-            <div class="card">
-                <p>Selamat ulang tahun yang ke-16, sayang! 🎉</p>
-                <p>Semoga di umur yang baru ini kamu semakin cantik, pinter, sehat selalu, dan semua yang kamu harapkan bisa tercapai.</p>
-                <p>Makasih ya udah jadi pacar yang hebat dan selalu ada. Di hari spesial ini, aku cuma mau bilang...</p>
-                <p><strong>I love you more than words can say! ❤️</strong></p>
-                <p class="signature">- Dafa</p>
+    <!-- Hero Section (Welcome) -->
+    <section class="hero" id="home">
+        <div class="hero-content hidden-scroll">
+            <h1>Happy Sweet 16th, Miel! 💙</h1>
+            <p>Scroll ke bawah ya, ada cerita buat kamu...</p>
+            <div class="scroll-indicator">
+                <span>↓</span>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Section 1: Intro / Story -->
+    <section class="story">
+        <div class="container hidden-scroll">
+            <h2 class="section-title">Hari yang Spesial ✨</h2>
+            <div class="content-wrapper">
+                <!-- Ganti link gambar di bawah ini dengan foto asli kamu -->
+                <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Taruh+Foto+Kamu+&+Salisa+1" alt="Foto 1" class="photo">
+                <div class="text-box">
+                    <p>Hari ini, 22 November, tepat 16 tahun yang lalu, lahir seseorang yang sekarang jadi bagian penting banget buat aku.</p>
+                    <p>Makasih ya udah lahir ke dunia ini dan akhirnya kita bisa ketemu. Kamu itu orang yang luar biasa, Salisa!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Kenangan / Memori -->
+    <section class="story blue-bg">
+        <div class="container hidden-scroll">
+            <h2 class="section-title text-white">Kenangan Kita 📸</h2>
+            <div class="content-wrapper reverse">
+                <!-- Ganti link gambar di bawah ini dengan foto asli kamu -->
+                <img src="https://placehold.co/600x400/ffffff/1e3a8a?text=Taruh+Foto+Kamu+&+Salisa+2" alt="Foto 2" class="photo shadow-white">
+                <div class="text-box text-white">
+                    <p>Banyak banget hal seru yang udah kita lewatin. Dari ngobrol random sampai hal-hal kecil yang bikin bahagia.</p>
+                    <p>Aku pengen terus ngumpulin momen-momen seru lainnya bareng kamu. You always make my day brighter! 🌟</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Pesan Terakhir -->
+    <section class="story">
+        <div class="container hidden-scroll">
+            <h2 class="section-title">My Wish For You 🎂</h2>
+            <div class="content-wrapper">
+                <!-- Ganti link gambar di bawah ini dengan foto asli kamu -->
+                <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Taruh+Foto+Salisa+Sendiri" alt="Foto 3" class="photo">
+                <div class="text-box card-style">
+                    <p>Di umur kamu yang ke-16 ini, aku doain semoga kamu selalu sehat, makin cantik, pinter, dan semua cita-cita kamu bisa tercapai.</p>
+                    <p>Tetap jadi Salisa (Miel) yang aku kenal ya. Aku bakal selalu dukung kamu.</p>
+                    <h3 class="signature">I Love You, Miel! 💙<br><span class="sender">- Dafa</span></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Kejutan Akhir -->
+    <section class="surprise" id="surprise-section">
+        <div class="container hidden-scroll">
+            <h2>Masih ada satu lagi...</h2>
+            <p>Klik tombol di bawah ini ya!</p>
+            <button id="confettiBtn" class="btn-surprise">Buka Kejutan! 🎁</button>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
