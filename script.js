@@ -34,6 +34,8 @@ finalGift.addEventListener('click', () => {
         // Kado Kebuka!
         finalGift.style.display = 'none';
         clickCounter.style.display = 'none';
+        
+        // Munculkan pesan (ganti class dari hidden ke aktif)
         finalMessage.classList.remove('hidden');
         
         // Luncurkan Confetti
@@ -42,7 +44,7 @@ finalGift.addEventListener('click', () => {
 });
 
 function fireConfetti() {
-    var duration = 8 * 1000;
+    var duration = 5 * 1000;
     var animationEnd = Date.now() + duration;
     var defaults = { startVelocity: 40, spread: 360, ticks: 100, zIndex: 9999 };
 
