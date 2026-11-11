@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Happy Sweet 16, Miel! 💙</title>
+    <title>Happy Sweet 16, Miel! 💙✨</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
@@ -14,28 +14,36 @@
 </head>
 <body>
 
+    <!-- LAYER ORNAMEN & EFEK MEWAH (WAAAAH EFFECT) -->
+    <!-- Salju / Bintang Berkilau Kecil Jatuh -->
+    <div class="sparkle-container" id="sparkleContainer"></div>
+
     <!-- Kupu-kupu terbang latar belakang (Global) -->
     <div class="bg-butterflies">
         <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-1" alt="butterfly">
         <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-2" alt="butterfly">
         <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-3" alt="butterfly">
+        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-4" alt="butterfly">
     </div>
 
     <!-- SCREEN 1: Press the Envelope -->
     <div id="screen-1" class="screen active">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
         <h1 class="elegant-title">Press the Envelope</h1>
         <div class="envelope-container" onclick="goToScreen('screen-2')">
             <div class="envelope">
                 <div class="wax-seal"></div> 
             </div>
-            <!-- Bunga mawar biru hiasan -->
+            <!-- Bunga mawar biru hiasan melimpah -->
             <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-1" alt="rose">
             <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-2" alt="rose">
+            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-3" alt="rose">
         </div>
-        <p class="tap-text pulse">tap to lanjut</p>
+        <p class="tap-text pulse">✨ tap to lanjut ✨</p>
     </div>
 
-    <!-- SCREEN 2: Opening Surprise (Collage berhamburan) -->
+    <!-- SCREEN 2: Opening Surprise (Collage Sangat Ramai & Mewah) -->
     <div id="screen-2" class="screen">
         <div class="collage-container">
             <!-- Amplop terbuka di belakang -->
@@ -47,26 +55,31 @@
                 <div class="badge">22.11.26</div>
             </div>
 
-            <!-- Objek-objek berhamburan -->
-            <div class="polaroid p-1"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+1" alt="Foto 1"></div>
-            <div class="polaroid p-2"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+2" alt="Foto 2"></div>
-            <div class="polaroid p-3"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+3" alt="Foto 3"></div>
-            <div class="polaroid p-4"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+4" alt="Foto 4"></div>
+            <!-- Objek-objek polaroid berhamburan sangat banyak -->
+            <div class="polaroid p-1"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Miel+1" alt="Foto 1"></div>
+            <div class="polaroid p-2"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Miel+2" alt="Foto 2"></div>
+            <div class="polaroid p-3"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Miel+3" alt="Foto 3"></div>
+            <div class="polaroid p-4"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Miel+4" alt="Foto 4"></div>
+            <div class="polaroid p-5"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Miel+5" alt="Foto 5"></div>
 
-            <!-- Dekorasi Mawar Biru & Kupu-kupu -->
+            <!-- Dekorasi Mawar Biru & Kupu-kupu Melimpah -->
             <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-1" alt="rose">
             <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-2" alt="rose">
-            <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly b-center" alt="butterfly">
+            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-3" alt="rose">
+            <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly b-center-1" alt="butterfly">
+            <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly b-center-2" alt="butterfly">
             
-            <!-- Hati Biru Glowing -->
+            <!-- Hati Biru Glowing Ekstra Banyak -->
             <div class="glow-heart h-1"><i class="fa-solid fa-heart"></i></div>
             <div class="glow-heart h-2"><i class="fa-solid fa-heart"></i></div>
+            <div class="glow-heart h-3"><i class="fa-solid fa-heart"></i></div>
         </div>
-        <p class="tap-text pulse pointer" onclick="goToScreen('screen-3')" style="position: absolute; bottom: 8%;">TAP FOR SURPRISE</p>
+        <p class="tap-text pulse pointer" onclick="goToScreen('screen-3')" style="position: absolute; bottom: 6%;">💖 TAP FOR SURPRISE 💖</p>
     </div>
 
-    <!-- SCREEN 3: Choose the Surprise (MENU) -->
+    <!-- SCREEN 3: Choose the Surprise (MENU Mewah) -->
     <div id="screen-3" class="screen">
+        <div class="glow-orb orb-3"></div>
         <h1 class="elegant-title mb-large">Choose the Surprise</h1>
         <div class="menu-container">
             <div class="menu-item" onclick="goToScreen('screen-journey')">
@@ -88,7 +101,7 @@
         </div>
     </div>
 
-    <!-- SUB-SCREEN: JOURNEY (Photo Gallery) -->
+    <!-- SUB-SCREEN: JOURNEY (Galeri Foto Super Ramai) -->
     <div id="screen-journey" class="screen">
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
         <div class="journey-collage">
@@ -100,14 +113,17 @@
             <div class="polaroid j-6"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+F" alt="F"></div>
             <div class="polaroid j-7"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+G" alt="G"></div>
             
+            <!-- Ornamen Kosmik Melimpah -->
             <i class="fa-solid fa-planet-ringed float-deco d-1"></i>
             <i class="fa-solid fa-planet-moon float-deco d-3"></i>
-            <div class="glow-heart d-2" style="font-size: 4rem;"><i class="fa-solid fa-heart"></i></div>
+            <div class="glow-heart d-2" style="font-size: 3.5rem;"><i class="fa-solid fa-heart"></i></div>
             <i class="fa-solid fa-fish float-deco d-4"></i>
+            <i class="fa-solid fa-star float-deco d-5"></i>
+            <i class="fa-solid fa-wand-magic-sparkles float-deco d-6"></i>
         </div>
     </div>
 
-    <!-- SUB-SCREEN: MOMENT (Letter) -->
+    <!-- SUB-SCREEN: MOMENT (Letter Estetik) -->
     <div id="screen-moment" class="screen">
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
         <div class="moment-container">
@@ -136,41 +152,39 @@
         </div>
     </div>
 
-    <!-- SUB-SCREEN: PLAYLIST (YouTube Video) -->
+    <!-- SUB-SCREEN: PLAYLIST (YouTube Video + Bingkai Mewah) -->
     <div id="screen-playlist" class="screen">
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
         <div class="playlist-container">
             <div class="video-wrapper">
-                <!-- LINK YOUTUBE BARU SESUAI REQUEST -->
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oVZg-WwgivI?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-            <div class="playlist-decor">
-                <img src="https://placehold.co/150x200/1e3a8a/ffffff?text=Miel+1" class="gold-frame small-frame pf-1" alt="Miel 1">
-                <img src="https://placehold.co/150x200/1e3a8a/ffffff?text=Miel+2" class="gold-frame small-frame pf-2" alt="Miel 2">
-                <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+3" class="gold-frame small-frame pf-3" alt="Miel 3">
+            <!-- Dekorasi bingkai melayang di sekitar video (Waaah effect) -->
+            <div class="playlist-extra-decor">
+                <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+1" class="gold-frame float-f-1" alt="f1">
+                <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+2" class="gold-frame float-f-2" alt="f2">
                 <div class="neon-notes">
                     <i class="fa-solid fa-music note-1"></i>
                     <i class="fa-solid fa-music note-2"></i>
-                    <i class="fa-solid fa-music note-3"></i>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SUB-SCREEN: GIFT (Interactive Surprise) -->
+    <!-- SUB-SCREEN: GIFT (Interactive Surprise Akhir) -->
     <div id="screen-gift" class="screen">
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
         <div class="gift-container">
             <h2 class="elegant-title mb-large">Satu Lagi Buat Kamu...</h2>
             <div class="gift-box-interactive" id="finalGift">
                 🎁
-                <!-- Bintang-bintang di sekitar kado -->
+                <!-- Bintang-bintang berkilau di sekitar kado -->
                 <i class="fa-solid fa-star star-float" style="top:-10px; left:-10px;"></i>
                 <i class="fa-solid fa-star star-float" style="bottom:-10px; right:-10px; animation-delay:1s;"></i>
+                <i class="fa-solid fa-heart star-float" style="top:20px; right:-25px; color:#60a5fa; animation-delay:0.5s;"></i>
             </div>
             <p class="tap-text" id="clickCounter">Klik 5 kali!</p>
             
-            <!-- PESAN TERAKHIR (Sudah diperbaiki ukurannya agar pas di HP) -->
             <div id="finalMessage" class="hidden final-message-wrapper">
                 <div class="final-card">
                     <h3 class="elegant-title" style="color: #1e3a8a; font-size:2.5rem; text-shadow: none;">Happy Sweet 16, Miel! 🎉</h3>
