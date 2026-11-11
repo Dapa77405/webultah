@@ -1,13 +1,29 @@
-document.getElementById('giftBox').addEventListener('click', function() {
-    // Sembunyikan halaman awal
-    document.getElementById('intro').classList.add('hidden');
+// Intersection Observer untuk animasi muncul saat di-scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show-scroll');
+        }
+    });
+}, {
+    threshold: 0.1 // Animasi mulai saat elemen terlihat 10% di layar
+});
+
+// Pilih semua elemen dengan class hidden-scroll
+const hiddenElements = document.querySelectorAll('.hidden-scroll');
+hiddenElements.forEach((el) => observer.observe(el));
+
+
+// Fungsi Confetti untuk tombol kejutan
+document.getElementById('confettiBtn').addEventListener('click', function() {
     
-    // Tampilkan pesan
-    const msg = document.getElementById('message');
-    msg.classList.remove('hidden');
-    
-    // Mulai efek Confetti (Kertas warna-warni)
-    var duration = 5 * 1000; // 5 detik
+    // Ubah teks tombol setelah diklik
+    this.innerText = "Happy Birthday Miel! 💙🎉";
+    this.style.backgroundColor = "#1e3a8a";
+    this.style.color = "white";
+
+    // Kembang api kertas (Confetti)
+    var duration = 5 * 1000;
     var animationEnd = Date.now() + duration;
     var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -23,13 +39,17 @@ document.getElementById('giftBox').addEventListener('click', function() {
       }
 
       var particleCount = 50 * (timeLeft / duration);
-      // Confetti dari kiri
-      confetti(Object.assign({}, defaults, { particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+      
+      confetti(Object.assign({}, defaults, { 
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+          colors: ['#ffffff', '#1e3a8a', '#3b82f6', '#60a5fa'] // Warna dominan biru putih
       }));
-      // Confetti dari kanan
-      confetti(Object.assign({}, defaults, { particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+      
+      confetti(Object.assign({}, defaults, { 
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+          colors: ['#ffffff', '#1e3a8a', '#3b82f6', '#60a5fa']
       }));
     }, 250);
 });
