@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Sweet 16, Miel! 💙</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -16,9 +16,9 @@
 
     <!-- Kupu-kupu terbang latar belakang (Global) -->
     <div class="bg-butterflies">
-        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-1">
-        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-2">
-        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-1" alt="butterfly">
+        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-2" alt="butterfly">
+        <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="butterfly b-3" alt="butterfly">
     </div>
 
     <!-- SCREEN 1: Press the Envelope -->
@@ -26,20 +26,18 @@
         <h1 class="elegant-title">Press the Envelope</h1>
         <div class="envelope-container" onclick="goToScreen('screen-2')">
             <div class="envelope">
-                <!-- Segel diganti warna biru neon (meniru ungu/pink) -->
                 <div class="wax-seal"></div> 
             </div>
             <!-- Bunga mawar biru hiasan -->
-            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-1">
-            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-2">
+            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-1" alt="rose">
+            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose rose-env-2" alt="rose">
         </div>
         <p class="tap-text pulse">tap to lanjut</p>
     </div>
 
-    <!-- SCREEN 2: Opening Surprise (Collage berhamburan seperti referensi pink) -->
+    <!-- SCREEN 2: Opening Surprise (Collage berhamburan) -->
     <div id="screen-2" class="screen">
         <div class="collage-container">
-            
             <!-- Amplop terbuka di belakang -->
             <div class="envelope-open-bg"></div>
 
@@ -50,30 +48,21 @@
             </div>
 
             <!-- Objek-objek berhamburan -->
-            <div class="polaroid p-1">
-                <img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+1" alt="Foto 1">
-            </div>
-            <div class="polaroid p-2">
-                <img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+2" alt="Foto 2">
-            </div>
-            <div class="polaroid p-3">
-                <img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+3" alt="Foto 3">
-            </div>
-            <div class="polaroid p-4">
-                <img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+4" alt="Foto 4">
-            </div>
+            <div class="polaroid p-1"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+1" alt="Foto 1"></div>
+            <div class="polaroid p-2"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+2" alt="Foto 2"></div>
+            <div class="polaroid p-3"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+3" alt="Foto 3"></div>
+            <div class="polaroid p-4"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+4" alt="Foto 4"></div>
 
-            <!-- Dekorasi Mawar Biru & Kupu-kupu (Meniru objek bunga/kupu pink) -->
-            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-1">
-            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-2">
-            <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly b-center">
+            <!-- Dekorasi Mawar Biru & Kupu-kupu -->
+            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-1" alt="rose">
+            <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose r-2" alt="rose">
+            <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly b-center" alt="butterfly">
             
             <!-- Hati Biru Glowing -->
             <div class="glow-heart h-1"><i class="fa-solid fa-heart"></i></div>
             <div class="glow-heart h-2"><i class="fa-solid fa-heart"></i></div>
-            
         </div>
-        <p class="tap-text pulse pointer" onclick="goToScreen('screen-3')" style="position: absolute; bottom: 10%;">TAP FOR SURPRISE</p>
+        <p class="tap-text pulse pointer" onclick="goToScreen('screen-3')" style="position: absolute; bottom: 8%;">TAP FOR SURPRISE</p>
     </div>
 
     <!-- SCREEN 3: Choose the Surprise (MENU) -->
@@ -102,22 +91,19 @@
     <!-- SUB-SCREEN: JOURNEY (Photo Gallery) -->
     <div id="screen-journey" class="screen">
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
-        
         <div class="journey-collage">
-            <!-- Menambahkan lebih banyak objek lucu -->
-            <div class="polaroid j-1"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+A"></div>
-            <div class="polaroid j-2"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+B"></div>
-            <div class="polaroid j-3"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+C"></div>
-            <div class="polaroid j-4"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+D"></div>
-            <div class="polaroid j-5"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+E"></div>
-            <div class="polaroid j-6"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+F"></div>
-            <div class="polaroid j-7"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+G"></div>
+            <div class="polaroid j-1"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+A" alt="A"></div>
+            <div class="polaroid j-2"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+B" alt="B"></div>
+            <div class="polaroid j-3"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+C" alt="C"></div>
+            <div class="polaroid j-4"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+D" alt="D"></div>
+            <div class="polaroid j-5"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+E" alt="E"></div>
+            <div class="polaroid j-6"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+F" alt="F"></div>
+            <div class="polaroid j-7"><img src="https://placehold.co/200x250/1e3a8a/ffffff?text=Foto+G" alt="G"></div>
             
-            <!-- Objek planet, paus, lope (seperti referensi TikTok) -->
             <i class="fa-solid fa-planet-ringed float-deco d-1"></i>
             <i class="fa-solid fa-planet-moon float-deco d-3"></i>
-            <div class="glow-heart d-2" style="font-size: 5rem;"><i class="fa-solid fa-heart"></i></div>
-            <i class="fa-solid fa-fish float-deco d-4"></i> <!-- Paus pengganti -->
+            <div class="glow-heart d-2" style="font-size: 4rem;"><i class="fa-solid fa-heart"></i></div>
+            <i class="fa-solid fa-fish float-deco d-4"></i>
         </div>
     </div>
 
@@ -126,21 +112,20 @@
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
         <div class="moment-container">
             <div class="letter-paper">
-                <!-- Tambahan bunga di ujung kertas -->
-                <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose" style="position:absolute; top:-30px; left:-30px; width:80px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose" style="position:absolute; top:-20px; left:-20px; width:60px;" alt="rose">
                 
-                <h2 class="elegant-title" style="color:#1e3a8a; font-size:3rem; text-align:left;">Salisa (Miel) Sayang,</h2>
+                <h2 class="elegant-title" style="color:#1e3a8a; font-size:2.2rem; text-align:left; margin-bottom: 10px;">Salisa (Miel) Sayang,</h2>
                 <p>Selamat ulang tahun, Sayang. Di hari spesialmu yang ke-16 ini, aku cuma mau bilang terima kasih karena sudah lahir ke dunia dan membawa begitu banyak kebahagiaan ke hidupku.</p>
                 <p>Kamu adalah hal terindah yang pernah hadir dalam hidupku, dan aku berharap bisa terus merayakan hari-hari bahagiamu di tahun-tahun berikutnya. I love you so much, kini dan nanti. 💙</p>
-                <p style="text-align: right; font-weight: bold; margin-top: 20px; font-size:1.5rem;">- Dafa</p>
+                <p style="text-align: right; font-weight: bold; margin-top: 15px; font-size:1.2rem;">- Dafa</p>
                 
-                <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose" style="position:absolute; bottom:-20px; right:-20px; width:70px; transform:rotate(180deg);">
+                <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose" style="position:absolute; bottom:-15px; right:-15px; width:50px; transform:rotate(180deg);" alt="rose">
             </div>
             
             <div class="moment-decor">
                 <div class="gold-frame-container">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose" style="position:absolute; top:-20px; right:-20px; width:60px; z-index:10;">
-                    <img src="https://placehold.co/250x300/1e3a8a/ffffff?text=Foto+Miel" class="gold-frame">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1054/1054117.png" class="deco-rose" style="position:absolute; top:-15px; right:-15px; width:50px; z-index:10;" alt="rose">
+                    <img src="https://placehold.co/250x300/1e3a8a/ffffff?text=Foto+Miel" class="gold-frame" alt="Miel">
                 </div>
                 
                 <div class="music-player-mini">
@@ -156,12 +141,13 @@
         <button class="back-btn" onclick="goToScreen('screen-3')">BACK ◀</button>
         <div class="playlist-container">
             <div class="video-wrapper">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/v9qRvt2oT4c?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- LINK YOUTUBE BARU SESUAI REQUEST -->
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oVZg-WwgivI?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="playlist-decor">
-                <img src="https://placehold.co/150x200/1e3a8a/ffffff?text=Miel+1" class="gold-frame small-frame pf-1">
-                <img src="https://placehold.co/150x200/1e3a8a/ffffff?text=Miel+2" class="gold-frame small-frame pf-2">
-                <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+3" class="gold-frame small-frame pf-3">
+                <img src="https://placehold.co/150x200/1e3a8a/ffffff?text=Miel+1" class="gold-frame small-frame pf-1" alt="Miel 1">
+                <img src="https://placehold.co/150x200/1e3a8a/ffffff?text=Miel+2" class="gold-frame small-frame pf-2" alt="Miel 2">
+                <img src="https://placehold.co/120x150/1e3a8a/ffffff?text=Miel+3" class="gold-frame small-frame pf-3" alt="Miel 3">
                 <div class="neon-notes">
                     <i class="fa-solid fa-music note-1"></i>
                     <i class="fa-solid fa-music note-2"></i>
@@ -179,16 +165,17 @@
             <div class="gift-box-interactive" id="finalGift">
                 🎁
                 <!-- Bintang-bintang di sekitar kado -->
-                <i class="fa-solid fa-star star-float" style="top:-20px; left:-20px;"></i>
-                <i class="fa-solid fa-star star-float" style="bottom:-20px; right:-20px; animation-delay:1s;"></i>
+                <i class="fa-solid fa-star star-float" style="top:-10px; left:-10px;"></i>
+                <i class="fa-solid fa-star star-float" style="bottom:-10px; right:-10px; animation-delay:1s;"></i>
             </div>
             <p class="tap-text" id="clickCounter">Klik 5 kali!</p>
             
-            <div id="finalMessage" class="hidden">
+            <!-- PESAN TERAKHIR (Sudah diperbaiki ukurannya agar pas di HP) -->
+            <div id="finalMessage" class="hidden final-message-wrapper">
                 <div class="final-card">
-                    <h3 class="elegant-title" style="color: #1e3a8a; font-size:3.5rem;">Happy Sweet 16, Miel! 🎉</h3>
-                    <p style="color: #333; margin-top: 15px; font-size:1.2rem;">Semoga panjang umur, sehat selalu, makin cantik, dan selalu jadi Salisa yang aku kenal. I Love You! 💙</p>
-                    <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly" style="bottom:10px; right:10px; width:40px;">
+                    <h3 class="elegant-title" style="color: #1e3a8a; font-size:2.5rem; text-shadow: none;">Happy Sweet 16, Miel! 🎉</h3>
+                    <p style="color: #333; margin-top: 10px; font-size:1rem; line-height: 1.6;">Semoga panjang umur, sehat selalu, makin cantik, dan selalu jadi Salisa yang aku kenal. I Love You! 💙</p>
+                    <img src="https://cdn-icons-png.flaticon.com/512/864/864387.png" class="deco-butterfly" style="bottom:10px; right:10px; width:30px;" alt="butterfly">
                 </div>
             </div>
         </div>
