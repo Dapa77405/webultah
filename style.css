@@ -6,15 +6,41 @@
 }
 
 body {
-    /* Vibe biru-putih malam yang elegan dan glowing seperti TikTok */
-    background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 70%, #020617 100%);
+    /* Vibe Biru Malam yang intens, gradasi dari navy ke hitam */
+    background: radial-gradient(circle at center, #1e3a8a 0%, #0c1527 60%, #020617 100%);
     color: white;
     height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
+
+/* Background Kupu-kupu Global */
+.bg-butterflies {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+}
+.butterfly {
+    position: absolute;
+    filter: invert(1) sepia(1) saturate(10) hue-rotate(200deg); /* Jadikan biru bersinar */
+    animation: fly 20s linear infinite;
+}
+.b-1 { width: 50px; top: 20%; left: -10%; animation-duration: 25s; }
+.b-2 { width: 30px; bottom: 30%; right: -10%; animation-duration: 18s; animation-direction: reverse; }
+.b-3 { width: 40px; top: 70%; left: -10%; animation-duration: 22s; }
+
+@keyframes fly {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    50% { transform: translateX(50vw) translateY(-100px) rotate(20deg); }
+    100% { transform: translateX(120vw) translateY(50px) rotate(-10deg); }
+}
+
 
 /* Screen Management */
 .screen {
@@ -27,10 +53,9 @@ body {
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.6s ease-in-out, visibility 0.6s;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
     z-index: 1;
 }
-
 .screen.active {
     opacity: 1;
     visibility: visible;
@@ -40,290 +65,378 @@ body {
 /* Typography */
 .elegant-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 4.5rem;
-    text-shadow: 0 0 15px rgba(255,255,255,0.5);
+    font-size: 5rem;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(255,255,255,0.4);
     margin-bottom: 20px;
     text-align: center;
 }
 .mb-large { margin-bottom: 50px; }
 .tap-text {
     font-style: italic;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: #cbd5e1;
-    margin-top: 30px;
+    margin-top: 40px;
+    font-size: 1.2rem;
 }
 .pointer { cursor: pointer; }
 .pulse { animation: pulse 1.5s infinite; }
 
 @keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 1; }
+    0% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #3b82f6; }
+    50% { transform: scale(1.05); opacity: 0.7; text-shadow: 0 0 20px #60a5fa; }
+    100% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #3b82f6; }
 }
 
 /* --- SCREEN 1: ENVELOPE --- */
 .envelope-container {
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
+    position: relative;
+    margin-top: 20px;
 }
 .envelope-container:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(1.05);
 }
 .envelope {
     position: relative;
-    width: 250px; height: 160px;
-    background: #f8fafc;
+    width: 300px; height: 190px;
+    background: #e2e8f0;
     border-radius: 5px;
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.5), inset 0 0 20px rgba(0,0,0,0.1);
 }
 .envelope::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 0; height: 0;
-    border-top: 80px solid #e2e8f0;
-    border-right: 125px solid transparent;
-    border-left: 125px solid transparent;
+    border-top: 100px solid #cbd5e1;
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
     z-index: 2;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
 }
+/* Segel diubah warnanya meniru referensi pink, tapi versi neon blue */
 .wax-seal {
     position: absolute;
-    top: 50px; left: 50%;
+    top: 70px; left: 50%;
     transform: translateX(-50%);
-    width: 45px; height: 45px;
-    background: radial-gradient(circle, #3b82f6, #1d4ed8);
+    width: 55px; height: 55px;
+    background: radial-gradient(circle, #38bdf8, #1d4ed8, #1e3a8a);
     border-radius: 50%;
     z-index: 3;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.5), 0 3px 5px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 0 5px 15px rgba(29, 78, 216, 0.8);
+    border: 2px solid #60a5fa;
 }
 
-/* --- SCREEN 2: OPENING SURPRISE --- */
+/* Mawar Hiasan */
+.deco-rose {
+    position: absolute;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(200deg) drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    width: 80px;
+}
+.rose-env-1 { top: -30px; left: -40px; transform: rotate(-20deg); }
+.rose-env-2 { bottom: -20px; right: -40px; transform: rotate(15deg); width: 60px; }
+.deco-butterfly {
+    position: absolute;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(190deg);
+}
+
+/* --- SCREEN 2: OPENING SURPRISE (Banyak Objek Berhamburan) --- */
 .collage-container {
     position: relative;
-    width: 100%; max-width: 800px;
-    height: 400px;
+    width: 100%; max-width: 900px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.center-letter {
-    background: rgba(255,255,255,0.9);
-    padding: 30px 50px;
+
+/* Amplop Terbuka di belakang surat */
+.envelope-open-bg {
+    position: absolute;
+    width: 450px; height: 300px;
+    background: #cbd5e1;
     border-radius: 10px;
+    z-index: 1;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -40%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.envelope-open-bg::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 0;
+    border-bottom: 150px solid #e2e8f0;
+    border-right: 225px solid transparent;
+    border-left: 225px solid transparent;
+    z-index: 4;
+}
+
+.center-letter {
+    background: #ffffff;
+    padding: 30px 60px;
+    border-radius: 15px;
     text-align: center;
     color: #1e3a8a;
-    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    box-shadow: 0 0 50px rgba(255,255,255,0.4);
     z-index: 5;
     position: relative;
+    transform: translateY(-20px);
 }
 .center-letter .elegant-title {
     color: #1e3a8a;
-    text-shadow: none;
-    font-size: 4rem;
-    margin-bottom: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 4.5rem;
+    margin-bottom: -5px;
 }
 .badge {
-    background: #3b82f6;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.2rem;
     display: inline-block;
-    margin-top: -10px;
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 5px 15px rgba(29, 78, 216, 0.5);
 }
 
+/* Polaroid Berhamburan (Meniru referensi 2) */
 .polaroid {
     background: white;
-    padding: 10px 10px 30px 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    padding: 10px 10px 40px 10px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
     position: absolute;
-    z-index: 2;
-    transition: transform 0.3s;
+    z-index: 6;
+    transition: transform 0.4s ease;
 }
-.polaroid:hover { z-index: 10; transform: scale(1.1) !important; }
-.p-1 { left: 10%; transform: rotate(-15deg); }
-.p-2 { right: 10%; transform: rotate(10deg); }
+.polaroid img { width: 100%; height: 100%; object-fit: cover; }
+.polaroid:hover { z-index: 20; transform: scale(1.15) !important; }
 
-.floating-icon {
+/* Posisi Polaroid Screen 2 */
+.p-1 { width: 180px; left: 5%; top: 20%; transform: rotate(-15deg); }
+.p-2 { width: 160px; left: 15%; bottom: 10%; transform: rotate(10deg); }
+.p-3 { width: 150px; right: 5%; top: 15%; transform: rotate(12deg); }
+.p-4 { width: 170px; right: 12%; bottom: 5%; transform: rotate(-8deg); }
+
+/* Dekorasi Bunga & Kupu di Screen 2 */
+.r-1 { width: 100px; top: 10%; right: 25%; z-index: 7; }
+.r-2 { width: 70px; bottom: 20%; left: 30%; z-index: 7; }
+.b-center { width: 120px; bottom: 5%; left: 20%; z-index: 8; transform: rotate(-15deg); animation: float 4s infinite alternate; }
+
+/* Hati Glowing meniru Hati Pink */
+.glow-heart {
     position: absolute;
     color: #60a5fa;
-    font-size: 3rem;
-    text-shadow: 0 0 15px #60a5fa;
+    font-size: 6rem;
+    text-shadow: 0 0 20px #38bdf8, 0 0 40px #2563eb;
+    z-index: 4;
     animation: float 3s infinite ease-in-out;
 }
-.f-1 { top: 20%; left: 25%; color: #93c5fd; }
-.f-2 { bottom: 20%; right: 25%; }
+.h-1 { top: 10%; left: 20%; transform: rotate(-20deg); font-size: 8rem; opacity: 0.8;}
+.h-2 { bottom: 30%; right: 25%; transform: rotate(15deg); font-size: 4rem;}
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
 
 /* --- SCREEN 3: MENU --- */
 .menu-container {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     justify-content: center;
     flex-wrap: wrap;
+    width: 90%; max-width: 800px;
 }
 .menu-item {
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s;
 }
-.menu-item:hover { transform: scale(1.1); }
+.menu-item:hover { transform: scale(1.2); }
 .icon-glow {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
+    font-size: 4.5rem;
+    margin-bottom: 20px;
     color: #fff;
-    text-shadow: 0 0 20px #60a5fa, 0 0 40px #3b82f6;
+    text-shadow: 0 0 25px #60a5fa, 0 0 50px #1d4ed8;
 }
 .menu-item p {
     font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #e0f2fe;
 }
 
 /* --- GLOBAL BACK BUTTON --- */
 .back-btn {
     position: absolute;
-    top: 30px; right: 30px;
-    background: #10b981; /* Warna hijau seperti di TikTok */
+    top: 40px; right: 40px;
+    background: #22c55e; /* Hijau cerah ala TikTok */
     color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: bold;
+    border: 3px solid #16a34a;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
     z-index: 50;
-    transition: transform 0.2s;
+    transition: transform 0.2s, background 0.2s;
 }
-.back-btn:hover { transform: scale(1.05); }
+.back-btn:hover { transform: scale(1.1); background: #16a34a; }
 
-/* --- SCREEN 4: JOURNEY --- */
+
+/* --- SCREEN 4: JOURNEY (Lebih banyak foto & Objek) --- */
 .journey-collage {
     position: relative;
-    width: 90vw; height: 70vh;
-    max-width: 1000px;
+    width: 95vw; height: 80vh;
+    max-width: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.j-1 { top: 10%; left: 10%; transform: rotate(-10deg); }
-.j-2 { top: 15%; right: 15%; transform: rotate(15deg); }
-.j-3 { bottom: 10%; left: 20%; transform: rotate(-5deg); }
-.j-4 { bottom: 15%; right: 20%; transform: rotate(8deg); }
-.j-5 { z-index: 5; transform: rotate(2deg) scale(1.2); }
+/* Posisi Acak Polaroid Journey */
+.j-1 { width: 180px; top: 5%; left: 5%; transform: rotate(-12deg); }
+.j-2 { width: 170px; top: 10%; right: 10%; transform: rotate(15deg); }
+.j-3 { width: 160px; bottom: 5%; left: 15%; transform: rotate(-5deg); }
+.j-4 { width: 190px; bottom: 10%; right: 15%; transform: rotate(8deg); }
+.j-5 { width: 220px; z-index: 5; transform: rotate(2deg); }
+.j-6 { width: 150px; top: 30%; left: 25%; transform: rotate(-20deg); z-index: 4; }
+.j-7 { width: 160px; bottom: 30%; right: 25%; transform: rotate(18deg); z-index: 4; }
 
 .float-deco {
     position: absolute;
-    font-size: 4rem;
+    font-size: 5rem;
     color: #93c5fd;
-    text-shadow: 0 0 15px rgba(147, 197, 253, 0.5);
-    animation: float 4s infinite;
+    text-shadow: 0 0 20px #60a5fa, 0 0 40px #2563eb;
+    animation: float 4s infinite alternate;
 }
-.d-1 { bottom: 20%; left: 5%; color: #3b82f6; }
-.d-2 { top: 20%; right: 10%; color: #ffffff; }
+.d-1 { bottom: 15%; left: 8%; color: #cbd5e1; }
+.d-2 { top: 15%; right: 25%; }
+.d-3 { top: 20%; left: 35%; font-size: 4rem; color: #f8fafc;}
+.d-4 { bottom: 25%; right: 5%; color: #38bdf8; font-size: 4rem;} /* Paus */
+
 
 /* --- SCREEN 5: MOMENT --- */
 .moment-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
-    width: 90vw; max-width: 900px;
+    gap: 60px;
+    width: 95vw; max-width: 1100px;
     flex-wrap: wrap;
 }
 .letter-paper {
-    flex: 1;
-    min-width: 300px;
-    background: url('https://www.transparenttextures.com/patterns/cream-paper.png'), #fff;
-    color: #333;
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    line-height: 1.8;
+    flex: 1.5;
+    min-width: 350px;
+    background: url('https://www.transparenttextures.com/patterns/cream-paper.png'), #fdfbf7;
+    color: #1e293b;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    line-height: 1.9;
+    font-size: 1.1rem;
+    position: relative;
 }
 .moment-decor {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
+.gold-frame-container { position: relative; }
 .gold-frame {
-    border: 15px solid #d4af37;
-    border-radius: 5px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 20px solid #d4af37;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,0,0,0.5);
+    width: 280px;
 }
 .music-player-mini {
     display: flex;
     align-items: center;
-    gap: 15px;
-    background: rgba(0,0,0,0.5);
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: 1px solid #3b82f6;
+    gap: 20px;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 30px;
+    border-radius: 40px;
+    border: 2px solid #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
-.spin { animation: spin 4s linear infinite; font-size: 2rem; color: #60a5fa;}
-@keyframes spin { 100% { transform: rotate(360deg); } }
+.spin { animation: spin 4s linear infinite; font-size: 3rem; color: #60a5fa;}
+
 
 /* --- SCREEN 6: PLAYLIST --- */
 .playlist-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
-    width: 90vw; max-width: 1000px;
+    gap: 40px;
+    width: 95vw; max-width: 1200px;
     flex-wrap: wrap;
 }
 .video-wrapper {
     flex: 2;
-    min-width: 350px;
+    min-width: 400px;
     aspect-ratio: 16/9;
     background: #000;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-    border: 2px solid #3b82f6;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+    border: 3px solid #38bdf8;
+    z-index: 5;
 }
 .playlist-decor {
     flex: 1;
     position: relative;
-    height: 300px;
+    height: 400px;
+    min-width: 300px;
 }
-.small-frame { width: 150px; position: absolute; }
-.pf-1 { top: 0; left: 0; transform: rotate(-10deg); z-index: 2;}
-.pf-2 { bottom: 0; right: 0; transform: rotate(10deg); }
-.neon-notes {
+.small-frame { 
+    position: absolute; 
+    border-width: 10px; /* frame emas lebih tipis */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+.pf-1 { width: 160px; top: 0; left: 0; transform: rotate(-12deg); z-index: 3;}
+.pf-2 { width: 140px; bottom: 20px; right: 0; transform: rotate(15deg); z-index: 2;}
+.pf-3 { width: 130px; top: 40%; left: 40%; transform: rotate(5deg); z-index: 1;}
+
+.neon-notes i {
     position: absolute;
-    bottom: -30px; left: 0;
-    font-size: 3rem;
-    color: #60a5fa;
-    text-shadow: 0 0 15px #60a5fa, 0 0 30px #3b82f6;
+    font-size: 3.5rem;
+    color: #38bdf8;
+    text-shadow: 0 0 20px #38bdf8, 0 0 40px #1d4ed8;
     animation: float 2s infinite alternate;
 }
+.note-1 { bottom: -20px; left: -30px; }
+.note-2 { bottom: 50px; left: 40%; font-size: 2.5rem; animation-delay: 0.5s; }
+.note-3 { top: -20px; right: 20px; font-size: 4rem; animation-delay: 1s; }
+
 
 /* --- SCREEN 7: GIFT --- */
-.gift-container { text-align: center; }
+.gift-container { text-align: center; position: relative; }
 .gift-box-interactive {
-    font-size: 8rem;
+    position: relative;
+    font-size: 10rem;
     cursor: pointer;
     user-select: none;
     display: inline-block;
     transition: transform 0.1s;
-    margin: 20px 0;
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
+    margin: 30px 0;
+    filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.6));
 }
 .gift-box-interactive:active { transform: scale(0.9); }
+.star-float {
+    position: absolute;
+    color: #fef08a;
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px #facc15;
+    animation: pulse 1s infinite;
+}
+
 .final-card {
     background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(96, 165, 250, 0.5);
-    margin-top: 30px;
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.8);
+    margin-top: 40px;
+    position: relative;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .hidden { display: none; }
 @keyframes popIn {
@@ -331,15 +444,27 @@ body {
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Responsive */
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .elegant-title { font-size: 3.5rem; }
-    .center-letter { padding: 20px; }
-    .center-letter .elegant-title { font-size: 2.8rem; }
-    .menu-container { gap: 20px; }
-    .icon-glow { font-size: 2.5rem; }
-    .menu-item p { font-size: 1.5rem; }
-    .j-1, .j-2, .j-3, .j-4, .j-5 { width: 120px; } /* Resize polaroids on mobile */
-    .playlist-container { gap: 20px; }
-    .playlist-decor { display: none; } /* Hide frames on small screen to fit video */
+    .elegant-title { font-size: 3.8rem; }
+    .envelope { width: 250px; height: 160px; }
+    .envelope::before { border-top: 80px solid #cbd5e1; border-right: 125px solid transparent; border-left: 125px solid transparent; }
+    .wax-seal { top: 50px; width: 45px; height: 45px; }
+    
+    .envelope-open-bg { width: 350px; height: 250px; }
+    .envelope-open-bg::before { border-bottom: 120px solid #e2e8f0; border-right: 175px solid transparent; border-left: 175px solid transparent; }
+    .center-letter { padding: 20px 40px; }
+    .center-letter .elegant-title { font-size: 3rem; }
+    
+    .menu-container { gap: 30px; }
+    .icon-glow { font-size: 3.5rem; }
+    .menu-item p { font-size: 1.8rem; }
+    
+    /* Sembunyikan bbrp objek di HP biar ga penuh */
+    .j-6, .j-7, .p-3, .p-4 { display: none; }
+    .playlist-decor { display: none; }
+    .letter-paper { padding: 30px; font-size: 1rem;}
+    
+    .back-btn { top: 20px; right: 20px; padding: 8px 20px; font-size: 0.9rem;}
 }
