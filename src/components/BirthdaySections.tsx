@@ -32,7 +32,7 @@ export function HeroSection({ age }: { age: AgeParts }) {
           For the one who<br /><em>makes life bloom.</em>
         </motion.h1>
         <motion.p className="hero-description" initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.28 } }}>
-          Hari ini, dunia terasa sedikit lebih indah—karena hari ini adalah tentang kamu, Miel.
+          Hari ini, dunia terasa sedikit lebih indah—karena hari ini adalah tentang kamu, Miel Malop.
         </motion.p>
         <motion.a className="text-link" href="#birthday" whileHover={{ x: 5 }}>Jelajahi kejutan <ArrowDown size={16} /></motion.a>
       </div>
@@ -123,7 +123,7 @@ export function MemoriesSection({ images, onUpload, onZoom }: {
                 <span className="memory-inner">
                   <span className="memory-face memory-front">
                     <span className="tape" />
-                    {images[index] ? <img src={images[index] ?? ""} alt={`Kenangan Miel ${index + 1}`} /> : <span className={`photo-placeholder photo-${index + 1}`}><Camera size={25} /><small>our memory</small></span>}
+                    {images[index] ? <img src={images[index] ?? ""} alt={`Kenangan Miel Malop ${index + 1}`} /> : <span className={`photo-placeholder photo-${index + 1}`}><Camera size={25} /><small>our memory</small></span>}
                     <span className="memory-caption">{title}</span>
                     <span className="memory-date">22 · 11 · 26</span>
                   </span>
@@ -173,15 +173,15 @@ export function GiftsSection({ onOpen }: { onOpen: (gift: GiftInfo) => void }) {
 export function LetterSection() {
   return (
     <section id="letter" className="content-section letter-section section-shell">
-      <SectionHeading eyebrow="A NOTE, JUST FOR YOU" title="Dari hati, untuk Miel." note="Simpan surat ini untuk dibaca kapan pun kamu butuh pengingat kecil." />
+      <SectionHeading eyebrow="A NOTE, JUST FOR YOU" title="Dari hati, untuk Miel Malop." note="Simpan surat ini untuk dibaca kapan pun kamu butuh pengingat kecil." />
       <motion.article className="letter-card glass-card" variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
         <span className="letter-corner corner-one">✦</span><span className="letter-corner corner-two">✦</span>
         <div className="letter-topline"><span>22 NOVEMBER 2026</span><span className="letter-stamp"><Heart size={16} /></span></div>
-        <h3>Salisa (Miel) sayang,</h3>
+        <h3>Miel Malop sayang,</h3>
         <p>Selamat ulang tahun yang ke-16, Sayang. Hari ini aku cuma ingin bilang: terima kasih sudah hadir di dunia dan membawa begitu banyak warna ke hidup orang-orang di sekitarmu.</p>
         <p>Kamu punya cara yang istimewa untuk membuat hal sederhana terasa berarti. Semoga di usia yang baru ini, kamu selalu dikelilingi hal-hal yang membuatmu merasa aman, dicintai, dan bebas menjadi dirimu sendiri.</p>
         <p>Semoga setiap mimpi yang kamu simpan pelan-pelan menemukan jalannya. Kalau ada hari yang terasa berat, ingat bahwa kamu tidak harus melewatinya sendirian. Aku akan selalu mendukungmu—hari ini, besok, dan seterusnya.</p>
-        <p className="letter-signoff">I love you, kini dan nanti.<br /><strong>- Dafa</strong></p>
+        <p className="letter-signoff">I love you, kini dan nanti.<br /><strong>- Dapa Caesar</strong></p>
         <span className="letter-bottom-icon">🦋</span>
       </motion.article>
     </section>

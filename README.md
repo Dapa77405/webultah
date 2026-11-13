@@ -1,6 +1,6 @@
-# Miel — A Blue Butterfly Sanctuary
+# Miel Malop — A Blue Butterfly Sanctuary
 
-A birthday experience for Salisa (Miel), celebrating her 16th birthday on November 22, 2026.
+A birthday experience for Miel Malop, celebrating her 16th birthday on November 22, 2026. Made with love by Dapa Caesar.
 
 ## Run locally
 

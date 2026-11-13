@@ -266,7 +266,7 @@ export default function App() {
     <div className="app-shell">
       <ButterflyCanvas />
       <header className="topbar">
-        <a className="brand-mark" href="#home" aria-label="Kembali ke awal"><span className="brand-icon" aria-hidden="true">🦋</span><span>miel<span className="brand-dot">.</span></span></a>
+        <a className="brand-mark" href="#home" aria-label="Kembali ke awal"><span className="brand-icon" aria-hidden="true">🦋</span><span>miel malop<span className="brand-dot">.</span></span></a>
         <a className="topbar-date" href="#birthday">A LITTLE BIRTHDAY UNIVERSE <span>✦</span></a>
         <button className="sound-toggle" onClick={musicOn ? stopMusic : () => void startMusic()} aria-label={musicOn ? "Matikan musik" : "Putar musik"}>
           {musicOn ? <Volume2 size={16} /> : <VolumeX size={16} />}<span>{musicOn ? "Sound on" : "Sound off"}</span>
@@ -303,7 +303,7 @@ export default function App() {
           <motion.div className="opening-card glass-card" initial={{ opacity: 0, y: 28, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1, transition: { delay: 0.18, type: "spring", stiffness: 70, damping: 16 } }}>
             <span className="opening-kicker"><Sparkles size={14} /> A LITTLE SOMETHING FOR YOU</span>
             <div className="wax-seal"><span aria-hidden="true">🦋</span></div>
-            <span className="opening-script">for Miel</span>
+            <span className="opening-script">for Miel Malop</span>
             <h1>A day as lovely<br />as <em>you are.</em></h1>
             <p>Ada kejutan kecil, kenangan, dan banyak doa baik yang menunggumu di dalam.</p>
             <button className="button button-primary opening-button" onClick={openSurprise}>Buka kejutan spesial <Sparkles size={17} /></button>
