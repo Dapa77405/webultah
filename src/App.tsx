@@ -12,11 +12,16 @@ import {
 
 const BIRTH_DATE = new Date(2010, 10, 22, 0, 0, 0);
 const WISH_KEY = "miel-birthday-wishes";
-const SPOTIFY_TRACK_URI = "spotify:track:7IVukH71OXfAu3KudrrizN";
 const SPOTIFY_IFRAME_API = "https://open.spotify.com/embed/iframe-api/v1";
+const SPOTIFY_TRACKS = [
+  { id: "7IVukH71OXfAu3KudrrizN", title: "Japanese Denim", artist: "Daniel Caesar" },
+  { id: "5TpPSTItCwtZ8Sltr3vdzm", title: "Last Night on Earth", artist: "Green Day" },
+  { id: "04tvOIuyk8y0QVA8Ta0UOd", title: "Untuk Mencintaimu", artist: "Seventeen" },
+] as const;
 
 type SpotifyEmbedController = {
   destroy: () => void;
+  loadUri: (uri: string) => void;
   play: () => void;
 };
 type SpotifyIframeApi = {
@@ -76,10 +81,12 @@ export default function App() {
   const [gift, setGift] = useState<GiftInfo | null>(null);
   const [lightbox, setLightbox] = useState<{ image: string; title: string } | null>(null);
   const [wishes, setWishes] = useState<Wish[]>(loadWishes);
+  const [selectedTrack, setSelectedTrack] = useState<(typeof SPOTIFY_TRACKS)[number]>(SPOTIFY_TRACKS[0]);
   const [photos, setPhotos] = useState<(string | null)[]>(() => Array(6).fill(null) as (string | null)[]);
   const [notice, setNotice] = useState<string | null>(null);
   const spotifyHostRef = useRef<HTMLDivElement | null>(null);
   const spotifyControllerRef = useRef<SpotifyEmbedController | null>(null);
+  const selectedTrackRef = useRef<(typeof SPOTIFY_TRACKS)[number]>(SPOTIFY_TRACKS[0]);
   const musicRequestedRef = useRef(false);
   const micRef = useRef<{ stream: MediaStream; audio: AudioContext; interval: number; watchdog: number } | null>(null);
   const photoUrlsRef = useRef<string[]>([]);
@@ -97,8 +104,16 @@ export default function App() {
     const onSpotifyIframeApiReady = (api: SpotifyIframeApi) => {
       const host = spotifyHostRef.current;
       if (!host) return;
-      api.createController(host, { uri: SPOTIFY_TRACK_URI, width: "100%", height: "80" }, (controller) => {
+      const initialTrackId = selectedTrackRef.current.id;
+      api.createController(host, {
+        uri: `spotify:track:${initialTrackId}`,
+        width: "100%",
+        height: "80",
+      }, (controller) => {
         spotifyControllerRef.current = controller;
+        if (selectedTrackRef.current.id !== initialTrackId) {
+          controller.loadUri(`spotify:track:${selectedTrackRef.current.id}`);
+        }
         if (musicRequestedRef.current) controller.play();
       });
     };
@@ -145,6 +160,20 @@ export default function App() {
     musicRequestedRef.current = true;
     setNotice(null);
     spotifyControllerRef.current?.play();
+  };
+
+  const selectTrack = (trackId: string) => {
+    const track = SPOTIFY_TRACKS.find((option) => option.id === trackId);
+    if (!track) return;
+    selectedTrackRef.current = track;
+    setSelectedTrack(track);
+    musicRequestedRef.current = true;
+    setNotice(null);
+    const controller = spotifyControllerRef.current;
+    if (controller) {
+      controller.loadUri(`spotify:track:${track.id}`);
+      controller.play();
+    }
   };
 
   const openSurprise = () => {
@@ -284,6 +313,16 @@ export default function App() {
       </footer>
 
       <nav className="floating-dock" aria-label="Kontrol sound dan perayaan">
+        <select
+          className="spotify-track-select"
+          value={selectedTrack.id}
+          onChange={(event) => selectTrack(event.currentTarget.value)}
+          aria-label="Pilih lagu"
+        >
+          {SPOTIFY_TRACKS.map((track) => (
+            <option key={track.id} value={track.id}>{track.title} — {track.artist}</option>
+          ))}
+        </select>
         <div className="spotify-embed" ref={spotifyHostRef} aria-label="Pemutar lagu Spotify" />
         <button className="celebration-button" onClick={fireConfetti} title="Rayakan" aria-label="Rayakan dengan confetti"><Sparkles size={19} /></button>
       </nav>

@@ -255,7 +255,9 @@ h1, h2, h3, p { margin-top: 0; }
 .footer-butterfly { font-size: 16px; }
 .footer-heart { color: #74b1de; display: flex; }
 
-.floating-dock { position: fixed; z-index: 30; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 5px; width: min(620px, calc(100vw - 32px)); border: 1px solid rgba(147,197,253,.51); border-radius: 20px; padding: 7px; background: rgba(255,255,255,.8); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 13px 40px rgba(54,99,151,.15); }
+.floating-dock { position: fixed; z-index: 30; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 5px; width: min(780px, calc(100vw - 32px)); border: 1px solid rgba(147,197,253,.51); border-radius: 20px; padding: 7px; background: rgba(255,255,255,.8); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 13px 40px rgba(54,99,151,.15); }
+.spotify-track-select { flex: 0 0 160px; min-width: 0; height: 42px; padding: 0 11px; border: 1px solid #dceafa; border-radius: 12px; color: #42658a; background: rgba(255,255,255,.9); font: inherit; font-size: 10px; outline: 0; cursor: pointer; }
+.spotify-track-select:focus-visible { border-color: #75b7eb; box-shadow: 0 0 0 3px rgba(117,183,235,.2); }
 .spotify-embed { flex: 1 1 400px; min-width: 100px; max-width: 480px; height: 80px; overflow: hidden; border-radius: 12px; }
 .spotify-embed iframe { display: block; width: 100%; height: 80px; border: 0; border-radius: 12px; }
 .floating-dock a, .floating-dock button { width: 48px; min-height: 48px; padding: 5px 2px 4px; border: 0; border-radius: 13px; color: #65809f; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: transform .2s, color .2s, background .2s; }
@@ -382,7 +384,8 @@ h1, h2, h3, p { margin-top: 0; }
   .wish-sky { height: 185px; }
   .sky-empty { padding: 12px; font-size: 12px; text-align: center; }
   .footer { padding: 21px 23px 92px; font-size: 11px; }
-  .floating-dock { bottom: 10px; width: min(620px, calc(100vw - 24px)); justify-content: center; gap: 5px; padding: 5px 7px; border-radius: 17px; }
+  .floating-dock { bottom: 10px; width: min(780px, calc(100vw - 24px)); flex-wrap: wrap; justify-content: center; gap: 5px; padding: 5px 7px; border-radius: 17px; }
+  .spotify-track-select { order: -1; flex-basis: 100%; height: 36px; }
   .floating-dock a, .floating-dock button { width: 58px; min-width: 37px; flex: none; min-height: 43px; }
   .floating-dock .celebration-button { width: 43px; min-width: 43px; min-height: 43px; }
   .floating-dock a span, .floating-dock button span { font-size: 6.5px; }
