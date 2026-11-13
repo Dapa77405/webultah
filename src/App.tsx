@@ -2,8 +2,7 @@ import { useCallback, useEffect, useRef, useState, type ChangeEvent } from "reac
 import { AnimatePresence, motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import {
-  ArrowUp, AudioLines, Cake, Camera, Gift, Heart, Mail, Music2,
-  Sparkles, Volume2, VolumeX,
+  ArrowUp, AudioLines, Heart, Music2, Sparkles, Volume2, VolumeX,
 } from "lucide-react";
 import ButterflyCanvas from "./components/ButterflyCanvas";
 import {
@@ -12,14 +11,6 @@ import {
 } from "./components/BirthdaySections";
 
 const BIRTH_DATE = new Date(2010, 10, 22, 0, 0, 0);
-const NAV_ITEMS = [
-  { id: "home", label: "Home", icon: Sparkles },
-  { id: "birthday", label: "Birthday", icon: Cake },
-  { id: "memories", label: "Kenangan", icon: Camera },
-  { id: "gifts", label: "Kado", icon: Gift },
-  { id: "letter", label: "Surat", icon: Mail },
-  { id: "wishes", label: "Harapan", icon: Heart },
-];
 const WISH_KEY = "miel-birthday-wishes";
 
 function getAgeParts(now: Date): AgeParts {
@@ -286,10 +277,8 @@ export default function App() {
         <span className="footer-butterfly">🦋</span><p>Dibuat dengan sepenuh hati, khusus untuk merayakan hari spesialmu.</p><span className="footer-heart"><Heart size={14} fill="currentColor" /></span>
       </footer>
 
-      <nav className="floating-dock" aria-label="Navigasi bagian">
-        {NAV_ITEMS.map(({ id, label, icon: Icon }) => <a key={id} href={`#${id}`} title={label} aria-label={`Ke ${label}`}><Icon size={18} /><span>{label}</span></a>)}
-        <span className="dock-divider" />
-        <button onClick={musicOn ? stopMusic : () => void startMusic()} title={musicOn ? "Pause musik" : "Play musik"} aria-label={musicOn ? "Pause musik" : "Play musik"} className={musicOn ? "music-active" : ""}>{musicOn ? <AudioLines size={18} /> : <Music2 size={18} />}<span>{musicOn ? "Pause" : "Musik"}</span></button>
+      <nav className="floating-dock" aria-label="Kontrol sound dan perayaan">
+        <button onClick={musicOn ? stopMusic : () => void startMusic()} title={musicOn ? "Pause sound" : "Putar sound"} aria-label={musicOn ? "Pause sound" : "Putar sound"} className={musicOn ? "music-active" : ""}>{musicOn ? <AudioLines size={18} /> : <Music2 size={18} />}<span>{musicOn ? "Pause" : "Sound"}</span></button>
         <button onClick={fireConfetti} title="Rayakan" aria-label="Ledakkan confetti"><Sparkles size={18} /><span>Rayakan</span></button>
       </nav>
       <div className="swarm-control">

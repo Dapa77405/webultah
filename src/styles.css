@@ -265,7 +265,6 @@ h1, h2, h3, p { margin-top: 0; }
 .floating-dock svg { transition: transform .25s; }
 .floating-dock a:hover svg, .floating-dock button:hover svg { transform: scale(1.14) rotate(-7deg); }
 .floating-dock .music-active { color: #2672ce; }
-.dock-divider { width: 1px; height: 28px; background: #dce8f4; margin: 0 3px; }
 .swarm-control { position: fixed; z-index: 20; right: 24px; bottom: 29px; }
 .swarm-control button { border: 1px solid rgba(147,197,253,.55); border-radius: 24px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; color: #4778ad; background: rgba(255,255,255,.75); backdrop-filter: blur(12px); cursor: pointer; font-size: 9px; font-weight: 700; box-shadow: 0 8px 25px rgba(54,99,151,.1); transition: transform .2s; }
 .swarm-control button:hover { transform: translateY(-3px); }
@@ -385,11 +384,10 @@ h1, h2, h3, p { margin-top: 0; }
   .wish-sky { height: 185px; }
   .sky-empty { padding: 12px; font-size: 12px; text-align: center; }
   .footer { padding: 21px 23px 92px; font-size: 11px; }
-  .floating-dock { bottom: 10px; width: calc(100% - 18px); justify-content: space-around; gap: 0; padding: 5px 3px; border-radius: 17px; }
-  .floating-dock a, .floating-dock button { width: auto; min-width: 37px; flex: 1; min-height: 43px; }
+  .floating-dock { bottom: 10px; width: auto; justify-content: center; gap: 5px; padding: 5px 7px; border-radius: 17px; }
+  .floating-dock a, .floating-dock button { width: 58px; min-width: 37px; flex: none; min-height: 43px; }
   .floating-dock a span, .floating-dock button span { font-size: 6.5px; }
   .floating-dock svg { width: 16px; height: 16px; }
-  .dock-divider { height: 24px; margin-inline: 1px; }
   .swarm-control { bottom: 67px; right: 11px; }
   .back-top { width: 31px; height: 31px; right: 12px; bottom: 111px; }
   .back-top svg { width: 15px; }
