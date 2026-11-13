@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState, type ChangeEvent } from "reac
 import { AnimatePresence, motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import {
-  ArrowUp, AudioLines, Heart, Music2, Sparkles, Volume2, VolumeX,
+  ArrowUp, Heart, Sparkles,
 } from "lucide-react";
 import ButterflyCanvas from "./components/ButterflyCanvas";
 import {
@@ -12,6 +12,26 @@ import {
 
 const BIRTH_DATE = new Date(2010, 10, 22, 0, 0, 0);
 const WISH_KEY = "miel-birthday-wishes";
+const SPOTIFY_TRACK_URI = "spotify:track:7IVukH71OXfAu3KudrrizN";
+const SPOTIFY_IFRAME_API = "https://open.spotify.com/embed/iframe-api/v1";
+
+type SpotifyEmbedController = {
+  destroy: () => void;
+  play: () => void;
+};
+type SpotifyIframeApi = {
+  createController: (
+    element: HTMLElement,
+    options: { uri: string; width: string; height: string },
+    callback: (controller: SpotifyEmbedController) => void,
+  ) => void;
+};
+
+declare global {
+  interface Window {
+    onSpotifyIframeApiReady?: (api: SpotifyIframeApi) => void;
+  }
+}
 
 function getAgeParts(now: Date): AgeParts {
   const elapsed = Math.max(0, now.getTime() - BIRTH_DATE.getTime());
@@ -50,7 +70,6 @@ function loadWishes(): Wish[] {
 
 export default function App() {
   const [opened, setOpened] = useState(false);
-  const [musicOn, setMusicOn] = useState(false);
   const [age, setAge] = useState(() => getAgeParts(new Date()));
   const [candlesOn, setCandlesOn] = useState(true);
   const [blown, setBlown] = useState(false);
@@ -59,15 +78,49 @@ export default function App() {
   const [wishes, setWishes] = useState<Wish[]>(loadWishes);
   const [photos, setPhotos] = useState<(string | null)[]>(() => Array(6).fill(null) as (string | null)[]);
   const [notice, setNotice] = useState<string | null>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const musicTimerRef = useRef<number | null>(null);
-  const noteIndexRef = useRef(0);
+  const spotifyHostRef = useRef<HTMLDivElement | null>(null);
+  const spotifyControllerRef = useRef<SpotifyEmbedController | null>(null);
+  const musicRequestedRef = useRef(false);
   const micRef = useRef<{ stream: MediaStream; audio: AudioContext; interval: number; watchdog: number } | null>(null);
   const photoUrlsRef = useRef<string[]>([]);
 
   useEffect(() => {
     const timer = window.setInterval(() => setAge(getAgeParts(new Date())), 1000);
     return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleApiError = () => {
+      musicRequestedRef.current = false;
+      setNotice("Pemutar Spotify tidak dapat dimuat. Periksa koneksi internet lalu muat ulang halaman.");
+    };
+    const onSpotifyIframeApiReady = (api: SpotifyIframeApi) => {
+      const host = spotifyHostRef.current;
+      if (!host) return;
+      api.createController(host, { uri: SPOTIFY_TRACK_URI, width: "100%", height: "80" }, (controller) => {
+        spotifyControllerRef.current = controller;
+        if (musicRequestedRef.current) controller.play();
+      });
+    };
+
+    window.onSpotifyIframeApiReady = onSpotifyIframeApiReady;
+    let script = document.querySelector<HTMLScriptElement>(`script[src="${SPOTIFY_IFRAME_API}"]`);
+    if (!script) {
+      script = document.createElement("script");
+      script.src = SPOTIFY_IFRAME_API;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    script.addEventListener("error", handleApiError);
+
+    return () => {
+      script?.removeEventListener("error", handleApiError);
+      if (window.onSpotifyIframeApiReady === onSpotifyIframeApiReady) {
+        window.onSpotifyIframeApiReady = undefined;
+      }
+      spotifyControllerRef.current?.destroy();
+      spotifyControllerRef.current = null;
+    };
   }, []);
 
   useEffect(() => {
@@ -80,63 +133,19 @@ export default function App() {
   }, [wishes]);
 
   useEffect(() => () => {
-    if (musicTimerRef.current !== null) window.clearInterval(musicTimerRef.current);
     if (micRef.current) {
       window.clearInterval(micRef.current.interval);
       micRef.current.stream.getTracks().forEach((track) => track.stop());
       void micRef.current.audio.close();
     }
     photoUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
-    void audioContextRef.current?.close();
   }, []);
 
-  const playNote = useCallback((frequency: number, when = 0) => {
-    const audio = audioContextRef.current;
-    if (!audio || audio.state !== "running") return;
-    const oscillator = audio.createOscillator();
-    const gain = audio.createGain();
-    oscillator.type = "sine";
-    oscillator.frequency.value = frequency;
-    gain.gain.setValueAtTime(0.0001, audio.currentTime + when);
-    gain.gain.exponentialRampToValueAtTime(0.028, audio.currentTime + when + 0.04);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + when + 1.05);
-    oscillator.connect(gain);
-    gain.connect(audio.destination);
-    oscillator.start(audio.currentTime + when);
-    oscillator.stop(audio.currentTime + when + 1.1);
-  }, []);
-
-  const startMusic = useCallback(async () => {
-    try {
-      const AudioContextConstructor = window.AudioContext;
-      if (!AudioContextConstructor) throw new Error("Browser ini belum mendukung Web Audio.");
-      const audio = audioContextRef.current ?? new AudioContextConstructor();
-      audioContextRef.current = audio;
-      if (audio.state === "suspended") await audio.resume();
-      const melody = [392, 392, 440, 392, 523.25, 493.88, 392, 392, 440, 392, 587.33, 523.25, 392, 392, 783.99, 659.25, 523.25, 493.88, 440];
-      noteIndexRef.current = 0;
-      const playNext = () => {
-        const index = noteIndexRef.current % melody.length;
-        playNote(melody[index]);
-        if (index % 4 === 0) playNote(melody[(index + 2) % melody.length] / 2, 0.12);
-        noteIndexRef.current += 1;
-      };
-      playNext();
-      musicTimerRef.current = window.setInterval(playNext, 560);
-      setMusicOn(true);
-      setNotice(null);
-    } catch (error) {
-      console.error("Could not start the birthday music.", error);
-      setMusicOn(false);
-      setNotice("Musik tidak dapat diputar di browser ini. Coba aktifkan kembali setelah interaksi.");
-    }
-  }, [playNote]);
-
-  const stopMusic = useCallback(() => {
-    if (musicTimerRef.current !== null) window.clearInterval(musicTimerRef.current);
-    musicTimerRef.current = null;
-    setMusicOn(false);
-  }, []);
+  const startMusic = () => {
+    musicRequestedRef.current = true;
+    setNotice(null);
+    spotifyControllerRef.current?.play();
+  };
 
   const openSurprise = () => {
     setOpened(true);
@@ -259,9 +268,6 @@ export default function App() {
       <header className="topbar">
         <a className="brand-mark" href="#home" aria-label="Kembali ke awal"><span className="brand-icon" aria-hidden="true">🦋</span><span>miel malop<span className="brand-dot">.</span></span></a>
         <a className="topbar-date" href="#birthday">A LITTLE BIRTHDAY UNIVERSE <span>✦</span></a>
-        <button className="sound-toggle" onClick={musicOn ? stopMusic : () => void startMusic()} aria-label={musicOn ? "Matikan musik" : "Putar musik"}>
-          {musicOn ? <Volume2 size={16} /> : <VolumeX size={16} />}<span>{musicOn ? "Sound on" : "Sound off"}</span>
-        </button>
       </header>
 
       <main>
@@ -278,8 +284,8 @@ export default function App() {
       </footer>
 
       <nav className="floating-dock" aria-label="Kontrol sound dan perayaan">
-        <button onClick={musicOn ? stopMusic : () => void startMusic()} title={musicOn ? "Pause sound" : "Putar sound"} aria-label={musicOn ? "Pause sound" : "Putar sound"} className={musicOn ? "music-active" : ""}>{musicOn ? <AudioLines size={18} /> : <Music2 size={18} />}<span>{musicOn ? "Pause" : "Sound"}</span></button>
-        <button onClick={fireConfetti} title="Rayakan" aria-label="Ledakkan confetti"><Sparkles size={18} /><span>Rayakan</span></button>
+        <div className="spotify-embed" ref={spotifyHostRef} aria-label="Pemutar lagu Spotify" />
+        <button className="celebration-button" onClick={fireConfetti} title="Rayakan" aria-label="Rayakan dengan confetti"><Sparkles size={19} /></button>
       </nav>
       <div className="swarm-control">
         <button onClick={summonSwarm} aria-label="Panggil lebih banyak kupu-kupu"><span aria-hidden="true">🦋</span><span>Panggil kupu-kupu</span></button>

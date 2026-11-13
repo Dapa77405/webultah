@@ -13,7 +13,8 @@ Create a production build with `npm run build`, then preview it with `npm run pr
 
 ## Experience notes
 
-- The opening gesture starts an original, soft Web Audio melody. Browsers require this user interaction before audio can play.
+- The opening gesture starts Daniel Caesar's “Japanese Denim” in the Spotify player. Spotify playback requires an internet connection and may require a Spotify account.
+- The floating dock places the Spotify player beside a round celebration button on the right.
 - Birthday wishes are saved in this browser's local storage.
 - Uploaded polaroid photos use temporary object URLs and are kept for the current page session only.
 - Microphone candle blowing is optional; the on-screen candle button works without microphone access.
