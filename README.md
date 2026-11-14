@@ -17,7 +17,6 @@ Create a production build with `npm run build`, then preview it with `npm run pr
 - The floating dock places the Spotify player beside a round celebration button on the right.
 - Four interactive experiences follow the wishes section: Butterfly Catch, a persistent birthday Gachapon collection, a star-connecting constellation puzzle, and a swipeable birthday vibe check.
 - Butterfly Catch's best score and opened Gachapon cards are saved in this browser's local storage.
-- The floating glass dock includes icon shortcuts to all four new experiences.
 - The interface uses Plus Jakarta Sans and Playfair Display with the existing ethereal blue glass-card styling.
 Tolong git pull terlebih dahulu, lalu commit dan push semua perubahan terbaru ke branch main di GitHub- Birthday wishes are saved in this browser's local storage.
 - Shared polaroid photos are stored in `public/uploads` in the GitHub repository and are visible to all visitors. Anyone can upload a photo or replace one of the six shared photos; previous file versions may remain in Git history.

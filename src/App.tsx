@@ -11,7 +11,7 @@ import {
 } from "./components/BirthdaySections";
 import {
   BirthdayGachaponSection, BirthdayVibeSection, ButterflyCatchSection,
-  EXTRA_DOCK_LINKS, StarlightConstellationSection,
+  StarlightConstellationSection,
 } from "./components/BirthdayExtras";
 import { loadPhotos, savePhoto } from "./photoStorage";
 
@@ -355,13 +355,6 @@ export default function App() {
       </footer>
 
       <nav className="floating-dock" aria-label="Kontrol sound dan perayaan">
-        <div className="dock-game-links" aria-label="Navigasi permainan dan kejutan">
-          {EXTRA_DOCK_LINKS.map(({ href, label, icon: Icon }) => (
-            <a href={href} key={href} aria-label={`Ke ${label}`} title={label}>
-              <Icon size={16} /><span>{label}</span>
-            </a>
-          ))}
-        </div>
         <select
           className="spotify-track-select"
           value={selectedTrack.id}
