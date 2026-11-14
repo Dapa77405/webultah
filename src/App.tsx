@@ -19,6 +19,7 @@ const BIRTH_DATE = new Date(2010, 10, 22, 0, 0, 0);
 const WISH_KEY = "miel-birthday-wishes";
 const SPOTIFY_IFRAME_API = "https://open.spotify.com/embed/iframe-api/v1";
 const SPOTIFY_TRACKS = [
+  { id: "6H67gFuycHyTOROX2M4bbs", title: "bad", artist: "wave to earth" },
   { id: "7IVukH71OXfAu3KudrrizN", title: "Japanese Denim", artist: "Daniel Caesar" },
   { id: "5TpPSTItCwtZ8Sltr3vdzm", title: "Last Night on Earth", artist: "Green Day" },
   { id: "04tvOIuyk8y0QVA8Ta0UOd", title: "Untuk Mencintaimu", artist: "Seventeen" },
@@ -32,7 +33,6 @@ const SPOTIFY_TRACKS = [
   { id: "3EOzLBxti9kA01UvwfbPxs", title: "TOO DEEP TO TURN BACK", artist: "Daniel Caesar" },
   { id: "6VaXKBNmGPX8WPNhMX3OEV", title: "I Lay My Love on You", artist: "Westlife" },
   { id: "2v0vKdardqBzAPhObJyAvd", title: "Panasea", artist: "rumahsakit" },
-  { id: "6H67gFuycHyTOROX2M4bbs", title: "bad", artist: "wave to earth" },
 ] as const;
 
 type SpotifyEmbedController = {
