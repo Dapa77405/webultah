@@ -9,6 +9,7 @@ import {
   CakeSection, GiftModal, GiftsSection, HeroSection, LetterSection, Lightbox,
   MemoriesSection, MicrophoneHelp, WishesSection, type AgeParts, type GiftInfo, type Wish,
 } from "./components/BirthdaySections";
+import { loadPhotos, savePhoto } from "./photoStorage";
 
 const BIRTH_DATE = new Date(2010, 10, 22, 0, 0, 0);
 const WISH_KEY = "miel-birthday-wishes";
@@ -83,13 +84,30 @@ export default function App() {
   const [wishes, setWishes] = useState<Wish[]>(loadWishes);
   const [selectedTrack, setSelectedTrack] = useState<(typeof SPOTIFY_TRACKS)[number]>(SPOTIFY_TRACKS[0]);
   const [photos, setPhotos] = useState<(string | null)[]>(() => Array(6).fill(null) as (string | null)[]);
+  const [photosLoaded, setPhotosLoaded] = useState(false);
+  const [uploadPassword, setUploadPassword] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
   const spotifyHostRef = useRef<HTMLDivElement | null>(null);
   const spotifyControllerRef = useRef<SpotifyEmbedController | null>(null);
   const selectedTrackRef = useRef<(typeof SPOTIFY_TRACKS)[number]>(SPOTIFY_TRACKS[0]);
   const musicRequestedRef = useRef(false);
   const micRef = useRef<{ stream: MediaStream; audio: AudioContext; interval: number; watchdog: number } | null>(null);
-  const photoUrlsRef = useRef<string[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void loadPhotos().then((savedPhotos) => {
+      if (cancelled) return;
+      setPhotos(savedPhotos);
+    }).catch((error: unknown) => {
+      console.error("Could not load saved photos.", error);
+      if (!cancelled) setNotice(error instanceof Error ? error.message : "Foto bersama tidak dapat dimuat.");
+    }).finally(() => {
+      if (!cancelled) setPhotosLoaded(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => setAge(getAgeParts(new Date())), 1000);
@@ -153,7 +171,6 @@ export default function App() {
       micRef.current.stream.getTracks().forEach((track) => track.stop());
       void micRef.current.audio.close();
     }
-    photoUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
   }, []);
 
   const startMusic = () => {
@@ -249,26 +266,33 @@ export default function App() {
     return wish.id;
   };
 
-  const handleUpload = (index: number, event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const handleUpload = async (index: number, event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget;
+    const file = input.files?.[0];
     if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      setNotice("Pilih file gambar agar bisa ditambahkan ke polaroid.");
-      event.target.value = "";
+    if (!uploadPassword.trim()) {
+      setNotice("Masukkan kata sandi admin sebelum mengunggah foto.");
+      input.value = "";
       return;
     }
-    const url = URL.createObjectURL(file);
-    const previousUrl = photos[index];
-    if (previousUrl?.startsWith("blob:")) URL.revokeObjectURL(previousUrl);
-    photoUrlsRef.current.push(url);
+    input.value = "";
+    let result: Awaited<ReturnType<typeof savePhoto>>;
+    try {
+      result = await savePhoto(index, file, uploadPassword);
+    } catch (error) {
+      console.error("Could not save uploaded photo.", error);
+      setNotice(error instanceof Error ? error.message : "Foto gagal disimpan ke GitHub.");
+      return;
+    }
     setPhotos((previous) => {
       const updated = [...previous];
-      updated[index] = url;
+      updated[index] = result.url;
       return updated;
     });
-    setNotice("Foto berhasil ditambahkan ke kenanganmu.");
+    setNotice(result.cleanupWarning
+      ? "Foto tersimpan dan terlihat oleh semua. Versi lama masih tersimpan di GitHub."
+      : "Foto tersimpan di GitHub dan terlihat oleh semua.");
     window.setTimeout(() => setNotice(null), 2500);
-    event.target.value = "";
   };
 
   const openGift = (selected: GiftInfo) => {
@@ -302,7 +326,14 @@ export default function App() {
       <main>
         <HeroSection age={age} />
         <CakeSection candlesOn={candlesOn} blown={blown} onBlow={extinguishCandles} onRelight={() => { setCandlesOn(true); setBlown(false); }} onMic={() => void startMicrophone()} />
-        <MemoriesSection images={photos} onUpload={handleUpload} onZoom={(image, title) => setLightbox({ image, title })} />
+        <MemoriesSection
+          images={photos}
+          onUpload={handleUpload}
+          onZoom={(image, title) => setLightbox({ image, title })}
+          photosLoaded={photosLoaded}
+          uploadPassword={uploadPassword}
+          onUploadPasswordChange={setUploadPassword}
+        />
         <GiftsSection onOpen={openGift} />
         <LetterSection />
         <WishesSection wishes={wishes} onAdd={addWish} />

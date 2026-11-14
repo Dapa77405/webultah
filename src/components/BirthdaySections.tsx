@@ -95,8 +95,13 @@ const memoryNotes = [
   ["Always celebrated", "Hari ini dan setiap hari, kamu layak dirayakan.", "Dengan sepenuh hati."],
 ];
 
-export function MemoriesSection({ images, onUpload, onZoom }: {
-  images: (string | null)[]; onUpload: (index: number, event: ChangeEvent<HTMLInputElement>) => void; onZoom: (image: string, title: string) => void;
+export function MemoriesSection({ images, onUpload, onZoom, photosLoaded, uploadPassword, onUploadPasswordChange }: {
+  images: (string | null)[];
+  onUpload: (index: number, event: ChangeEvent<HTMLInputElement>) => void;
+  onZoom: (image: string, title: string) => void;
+  photosLoaded: boolean;
+  uploadPassword: string;
+  onUploadPasswordChange: (password: string) => void;
 }) {
   const fileInput = useRef<HTMLInputElement>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
@@ -111,8 +116,17 @@ export function MemoriesSection({ images, onUpload, onZoom }: {
     <section id="memories" className="content-section memories-section section-shell">
       <SectionHeading eyebrow="LITTLE TIME CAPSULE" title="Momen yang ingin disimpan." note="Buka sisi belakang polaroid, atau isi dengan fotomu sendiri." />
       <div className="memories-tools">
-        <label className="button button-soft upload-button"><ImagePlus size={16} /> Unggah foto <input ref={fileInput} type="file" accept="image/*" hidden onChange={(event) => onUpload(uploadIndex, event)} /></label>
-        <span>JPG, PNG, atau HEIC · tersimpan di sesi ini</span>
+        <input
+          className="upload-password"
+          type="password"
+          value={uploadPassword}
+          onChange={(event) => onUploadPasswordChange(event.target.value)}
+          placeholder="Kata sandi admin"
+          aria-label="Kata sandi admin untuk mengunggah foto"
+          autoComplete="new-password"
+        />
+        <label className="button button-soft upload-button"><ImagePlus size={16} /> Unggah foto <input ref={fileInput} type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" hidden disabled={!photosLoaded} onChange={(event) => onUpload(uploadIndex, event)} /></label>
+        <span>{photosLoaded ? "Foto bersama · JPG, PNG, WebP, GIF, AVIF · maks. 2 MB" : "Memuat foto bersama..."}</span>
       </div>
       <div className="memory-grid">
         {memoryNotes.map(([title, note, date], index) => {
