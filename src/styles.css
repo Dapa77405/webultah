@@ -265,7 +265,7 @@ h1, h2, h3, p { margin-top: 0; }
 .floating-dock a span, .floating-dock button span { font-size: 7px; }
 .floating-dock svg { transition: transform .25s; }
 .floating-dock a:hover svg, .floating-dock button:hover svg { transform: scale(1.14) rotate(-7deg); }
-.floating-dock .celebration-button { width: 48px; min-width: 48px; min-height: 48px; flex: none; padding: 0; border-radius: 50%; color: #fff; background: #438ce0; }
+.floating-dock .celebration-button { width: 48px; min-width: 48px; min-height: 48px; flex: none; margin-left: auto; padding: 0; border-radius: 50%; color: #fff; background: #438ce0; }
 .floating-dock .celebration-button:hover { color: #fff; background: #2672ce; }
 .swarm-control { position: fixed; z-index: 20; right: 24px; bottom: 29px; }
 .swarm-control button { border: 1px solid rgba(147,197,253,.55); border-radius: 24px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; color: #4778ad; background: rgba(255,255,255,.75); backdrop-filter: blur(12px); cursor: pointer; font-size: 9px; font-weight: 700; box-shadow: 0 8px 25px rgba(54,99,151,.1); transition: transform .2s; }
