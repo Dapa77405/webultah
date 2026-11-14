@@ -19,7 +19,7 @@ Create a production build with `npm run build`, then preview it with `npm run pr
 - Butterfly Catch's best score and opened Gachapon cards are saved in this browser's local storage.
 - The floating glass dock includes icon shortcuts to all four new experiences.
 - The interface uses Plus Jakarta Sans and Playfair Display with the existing ethereal blue glass-card styling.
-- Birthday wishes are saved in this browser's local storage.
+Tolong git pull terlebih dahulu, lalu commit dan push semua perubahan terbaru ke branch main di GitHub- Birthday wishes are saved in this browser's local storage.
 - Shared polaroid photos are stored in `public/uploads` in the GitHub repository and are visible to all visitors. Anyone can upload a photo or replace one of the six shared photos; previous file versions may remain in Git history.
 - The Vercel project must be connected to this repository and configured with `GITHUB_TOKEN` (a fine-grained token with Contents read/write permission for this repository). Never put the GitHub token in frontend code or commit it to the repository. Since uploads are open to everyone, visitors can replace shared photos and repeated uploads can create many commits.
 - Shared uploads support JPG, PNG, WebP, GIF, and AVIF images up to 2 MB. To load and upload photos locally, run the app with Vercel's development server so the `/api/photos` function is available.
