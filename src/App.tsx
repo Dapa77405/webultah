@@ -32,6 +32,7 @@ const SPOTIFY_TRACKS = [
   { id: "3EOzLBxti9kA01UvwfbPxs", title: "TOO DEEP TO TURN BACK", artist: "Daniel Caesar" },
   { id: "6VaXKBNmGPX8WPNhMX3OEV", title: "I Lay My Love on You", artist: "Westlife" },
   { id: "2v0vKdardqBzAPhObJyAvd", title: "Panasea", artist: "rumahsakit" },
+  { id: "6H67gFuycHyTOROX2M4bbs", title: "bad", artist: "wave to earth" },
 ] as const;
 
 type SpotifyEmbedController = {

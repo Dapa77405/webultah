@@ -13,7 +13,7 @@ Create a production build with `npm run build`, then preview it with `npm run pr
 
 ## Experience notes
 
-- The opening gesture starts Daniel Caesar's “Japanese Denim” in the Spotify player. Use the dock selector to choose from 13 tracks, including songs by Reality Club, Harry Styles, Charlie Puth, Saga Faye, LANY, Daniel Caesar, Westlife, and rumahsakit. Spotify playback requires an internet connection and may require a Spotify account.
+- The opening gesture starts Daniel Caesar's “Japanese Denim” in the Spotify player. Use the dock selector to choose from 14 tracks, including songs by Reality Club, Harry Styles, Charlie Puth, Saga Faye, LANY, Daniel Caesar, Westlife, rumahsakit, and wave to earth. Spotify playback requires an internet connection and may require a Spotify account.
 - The floating dock places the Spotify player beside a round celebration button on the right.
 - Four interactive experiences follow the wishes section: Butterfly Catch, a persistent birthday Gachapon collection, a star-connecting constellation puzzle, and a swipeable birthday vibe check.
 - Butterfly Catch's best score and opened Gachapon cards are saved in this browser's local storage.
