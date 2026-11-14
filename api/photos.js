@@ -1,4 +1,4 @@
-import { timingSafeEqual, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 
 const REPOSITORY = "Dapa77405/webultah";
 const BRANCH = "main";
@@ -53,15 +53,6 @@ async function updateFile(path, method, body) {
   return response.json();
 }
 
-function isAuthorized(request) {
-  const expected = process.env.UPLOAD_PASSWORD;
-  const supplied = request.headers["x-upload-password"];
-  if (!expected || typeof supplied !== "string") return false;
-  const expectedBytes = Buffer.from(expected);
-  const suppliedBytes = Buffer.from(supplied);
-  return expectedBytes.length === suppliedBytes.length && timingSafeEqual(expectedBytes, suppliedBytes);
-}
-
 function photoFileInfo(name) {
   const match = /^photo-(\d+)-(\d+)-[a-f0-9-]+\.(jpg|png|webp|gif|avif)$/i.exec(name);
   if (!match) return null;
@@ -89,13 +80,6 @@ async function getPhotos() {
 }
 
 async function uploadPhoto(request, response) {
-  if (!process.env.UPLOAD_PASSWORD) {
-    return json(response, 503, { error: "Kata sandi unggah belum dikonfigurasi di Vercel." });
-  }
-  if (!isAuthorized(request)) {
-    return json(response, 401, { error: "Kata sandi unggah admin tidak benar." });
-  }
-
   const { index, contentType, image } = request.body ?? {};
   const extension = IMAGE_EXTENSIONS[contentType];
   if (!Number.isInteger(index) || index < 0 || index >= 6 || !extension || typeof image !== "string") {

@@ -43,7 +43,7 @@ export async function loadPhotos(): Promise<(string | null)[]> {
   return photos;
 }
 
-export async function savePhoto(index: number, file: File, password: string): Promise<UploadResponse> {
+export async function savePhoto(index: number, file: File): Promise<UploadResponse> {
   if (!ALLOWED_IMAGE_TYPES.has(file.type)) {
     throw new Error("Gunakan foto JPG, PNG, WebP, GIF, atau AVIF.");
   }
@@ -53,10 +53,7 @@ export async function savePhoto(index: number, file: File, password: string): Pr
 
   const response = await fetch("/api/photos", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Upload-Password": password,
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ index, contentType: file.type, image: await fileToBase64(file) }),
   });
   return readJson<UploadResponse>(response);

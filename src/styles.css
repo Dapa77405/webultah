@@ -163,9 +163,6 @@ h1, h2, h3, p { margin-top: 0; }
 .memories-tools { display: flex; justify-content: center; align-items: center; gap: 13px; margin: -10px 0 28px; }
 .memories-tools > span { color: #a0adbd; font-size: 9px; }
 .upload-button { min-height: 36px; font-size: 10px; padding: 0 13px; }
-.upload-password { width: 150px; height: 36px; border: 1px solid #d3e6f8; border-radius: 20px; outline: 0; padding: 0 12px; color: #26456d; background: rgba(255,255,255,.8); font-size: 10px; }
-.upload-password::placeholder { color: #aab8c8; }
-.upload-password:focus { border-color: #84bbe7; box-shadow: 0 0 0 3px rgba(56,189,248,.09); }
 .memory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 20px; max-width: 840px; margin: 0 auto; perspective: 1000px; }
 .memory-card { min-width: 0; position: relative; border-radius: 4px; transform: rotate(var(--tilt, -1deg)); }
 .memory-card:nth-child(2n) { --tilt: 1.3deg; }
@@ -371,7 +368,6 @@ h1, h2, h3, p { margin-top: 0; }
   .memory-back { padding: 13px; gap: 9px; }
   .memory-back strong { font-size: 13px; }
   .memories-tools { flex-direction: column; gap: 7px; margin-top: -6px; }
-  .upload-password { width: min(230px, 80vw); }
   .gift-grid { grid-template-columns: 1fr; max-width: 340px; gap: 13px; }
   .gift-card { min-height: 226px; }
   .gift-illustration { margin: 9px 0 10px; }

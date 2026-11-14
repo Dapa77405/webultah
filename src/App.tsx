@@ -85,7 +85,6 @@ export default function App() {
   const [selectedTrack, setSelectedTrack] = useState<(typeof SPOTIFY_TRACKS)[number]>(SPOTIFY_TRACKS[0]);
   const [photos, setPhotos] = useState<(string | null)[]>(() => Array(6).fill(null) as (string | null)[]);
   const [photosLoaded, setPhotosLoaded] = useState(false);
-  const [uploadPassword, setUploadPassword] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
   const spotifyHostRef = useRef<HTMLDivElement | null>(null);
   const spotifyControllerRef = useRef<SpotifyEmbedController | null>(null);
@@ -270,15 +269,10 @@ export default function App() {
     const input = event.currentTarget;
     const file = input.files?.[0];
     if (!file) return;
-    if (!uploadPassword.trim()) {
-      setNotice("Masukkan kata sandi admin sebelum mengunggah foto.");
-      input.value = "";
-      return;
-    }
     input.value = "";
     let result: Awaited<ReturnType<typeof savePhoto>>;
     try {
-      result = await savePhoto(index, file, uploadPassword);
+      result = await savePhoto(index, file);
     } catch (error) {
       console.error("Could not save uploaded photo.", error);
       setNotice(error instanceof Error ? error.message : "Foto gagal disimpan ke GitHub.");
@@ -331,8 +325,6 @@ export default function App() {
           onUpload={handleUpload}
           onZoom={(image, title) => setLightbox({ image, title })}
           photosLoaded={photosLoaded}
-          uploadPassword={uploadPassword}
-          onUploadPasswordChange={setUploadPassword}
         />
         <GiftsSection onOpen={openGift} />
         <LetterSection />
