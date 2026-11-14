@@ -22,6 +22,16 @@ const SPOTIFY_TRACKS = [
   { id: "7IVukH71OXfAu3KudrrizN", title: "Japanese Denim", artist: "Daniel Caesar" },
   { id: "5TpPSTItCwtZ8Sltr3vdzm", title: "Last Night on Earth", artist: "Green Day" },
   { id: "04tvOIuyk8y0QVA8Ta0UOd", title: "Untuk Mencintaimu", artist: "Seventeen" },
+  { id: "6ZGgaShxOimGDfRz1T1zje", title: "Alexandra", artist: "Reality Club" },
+  { id: "2QB8FwOszur18Ai7t2XnNi", title: "Anything You Want", artist: "Reality Club" },
+  { id: "0QPdjsMOUhwouq1NS3HwfQ", title: "Coming Up Roses", artist: "Harry Styles" },
+  { id: "0ClPIeT6MSgfSgQ9ZrJbAq", title: "Cheating on You", artist: "Charlie Puth" },
+  { id: "2EIUQkawLEdWDytIL0mQV8", title: "Who are you?", artist: "Saga Faye" },
+  { id: "1vg0ZHaTvBwlNxLxyYrEvP", title: "you!", artist: "LANY" },
+  { id: "0bHer4P44xn8jcyMH0EMs8", title: "Neu Roses (Transgressor's Song)", artist: "Daniel Caesar" },
+  { id: "3EOzLBxti9kA01UvwfbPxs", title: "TOO DEEP TO TURN BACK", artist: "Daniel Caesar" },
+  { id: "6VaXKBNmGPX8WPNhMX3OEV", title: "I Lay My Love on You", artist: "Westlife" },
+  { id: "2v0vKdardqBzAPhObJyAvd", title: "Panasea", artist: "rumahsakit" },
 ] as const;
 
 type SpotifyEmbedController = {
