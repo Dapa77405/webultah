@@ -87,12 +87,12 @@ export function CakeSection({ candlesOn, blown, onBlow, onRelight, onMic }: {
 }
 
 const memoryNotes = [
-  ["A little magic", "Hari-hari biasa selalu terasa istimewa saat kamu ada.", "Momen kecil, selamanya."],
+  ["SUKIdayo", "Hari-hari biasa selalu terasa istimewa saat kamu ada.", "Momen kecil, selamanya."],
   ["Your bright laugh", "Tawa kamu punya cara sendiri untuk membuat ruangan terasa hangat.", "Simpan baik-baik."],
-  ["A beautiful soul", "Kebaikanmu adalah hal yang paling mudah diingat orang.", "Teruslah jadi kamu."],
-  ["New adventures", "Semoga tahun ini membawa cerita yang bahkan lebih indah.", "Bab baru dimulai."],
-  ["All the little things", "Hal sederhana bersamamu selalu punya tempat tersendiri.", "Untuk dikenang."],
-  ["Always celebrated", "Hari ini dan setiap hari, kamu layak dirayakan.", "Dengan sepenuh hati."],
+  ["miaww", "Kebaikanmu adalah hal yang paling mudah diingat orang.", "Teruslah jadi kamu."],
+  ["pemboy", "Semoga tahun ini membawa cerita yang bahkan lebih indah.", "Bab baru dimulai."],
+  ["Hai MBG", "Hal sederhana bersamamu selalu punya tempat tersendiri.", "Untuk dikenang."],
+  ["hiksss><", "Hari ini dan setiap hari, kamu layak dirayakan.", "Dengan sepenuh hati."],
 ];
 
 export function MemoriesSection({ images, onUpload, onZoom, photosLoaded }: {
